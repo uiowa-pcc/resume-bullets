@@ -84,6 +84,15 @@ textarea{min-height:88px;resize:vertical}
 .verb-filter{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 11px}
 .verb-list{display:flex;flex-wrap:wrap;gap:7px}
 .custom-verb{margin-top:11px;max-width:340px}
+.verb-first-note{margin:0 0 14px;padding:11px 13px;background:var(--soft);border-radius:11px;font-size:.9rem}
+.what-did-step{margin-top:16px}
+.verb-input-shell{display:flex;align-items:stretch;border:1.5px solid #B8B8B8;border-radius:10px;background:#fff;overflow:hidden}
+.verb-input-shell:focus-within{outline:3px solid var(--iowa-gold);outline-offset:3px}
+.verb-prefix{display:flex;align-items:center;padding:0 0 0 12px;font-weight:700;white-space:nowrap}
+.verb-prefix[hidden]{display:none!important}
+.verb-input-shell input[type="text"]{border:0;border-radius:0;outline:0;box-shadow:none;padding-left:6px}
+.verb-input-shell.locked{background:#F4F4F4;border-style:dashed}
+.verb-input-shell.locked input[type="text"]{background:#F4F4F4;color:#777;cursor:not-allowed}
 .detail-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:15px}
 .detail-card{border:1px solid #D8D8D8;border-radius:12px;padding:12px;background:#fff}
 .detail-card label{display:block;font-size:.92rem;margin-bottom:4px}
@@ -163,32 +172,42 @@ textarea{min-height:88px;resize:vertical}
 
   <section class="panel" id="buildPanel" aria-labelledby="build-title" hidden>
     <div class="step-label"><span class="step-number">2</span> Build</div>
-    <h2 id="build-title">What did you do?</h2>
-    <p class="section-copy">Focus on one responsibility, contribution, or accomplishment. You can build another bullet for the same experience afterward.</p>
+    <h2 id="build-title">Build one bullet at a time</h2>
+    <p class="section-copy"><strong>Plan to build more than one bullet for most experiences.</strong> Each bullet should highlight a different relevant skill, contribution, or accomplishment. Build one strong bullet now, then come back for another.</p>
+
+    <div class="verb-first-note"><strong>Start here:</strong> Choose a power verb first. Your selection will automatically appear at the beginning of the next step.</div>
+    <h3 id="verbHeading" tabindex="-1">Choose a power verb</h3>
+    <p class="example">Pick the verb that best describes your action.</p>
 
     <div class="skill-handoff" id="skillHandoff" hidden>
-      <strong>Recent power verbs from this experience</strong>
-      <p id="skillHandoffText"></p>
+      <strong>Your suggested power verbs</strong>
+      <div class="verb-list" id="skillHandoffList" aria-label="Suggested power verbs"></div>
     </div>
 
-    <h3>What kind of contribution are you describing?</h3>
-    <p class="example" style="margin-bottom:10px">Choose one to narrow the power-verb ideas. These are contribution types, not another competency rating.</p>
-    <div class="helper-grid" id="helperGrid"></div>
+    <div class="skill-handoff" id="starterVerbWrap" hidden>
+      <strong>Start with one of these</strong>
+      <div class="verb-list" id="starterVerbList" aria-label="Common power verbs"></div>
+    </div>
 
-    <div class="verb-area">
-      <h3 id="verbHeading">Power verbs</h3>
-      <p class="example">Pick the verb that most accurately describes what you did—not the one that sounds most impressive.</p>
-      <div class="verb-list" id="verbList" aria-label="Power verbs"></div>
-      <div class="field custom-verb">
-        <label for="customVerb">Or enter your own past-tense verb <span class="hint">(optional)</span></label>
-        <input id="customVerb" type="text" autocomplete="off" placeholder="e.g., Reconciled">
+    <details class="verb-area" id="moreVerbDetails">
+      <summary><strong>Need another verb?</strong></summary>
+      <div style="margin-top:12px">
+        <div class="verb-list" id="verbList" aria-label="More power verbs"></div>
+        <div class="field custom-verb">
+          <label for="customVerb">Or type your own past-tense verb</label>
+          <input id="customVerb" type="text" autocomplete="off" placeholder="e.g., Reconciled">
+        </div>
+        <p class="resource-link"><a href="https://careers.uiowa.edu/resume-writing-power-verbs" target="_blank" rel="noopener">See the full Power Verb List</a></p>
       </div>
-    </div>
+    </details>
 
-    <div class="field">
+    <div class="field what-did-step" id="whatDidWrap">
       <label for="whatDid">What did you do?</label>
-      <input id="whatDid" type="text" autocomplete="off" placeholder="e.g., weekly community-building programs">
-      <p class="example">Write the phrase that should come after your verb. You do not need to repeat the verb here.</p>
+      <div class="verb-input-shell locked" id="verbInputShell">
+        <span class="verb-prefix" id="verbPrefix" hidden></span>
+        <input id="whatDid" type="text" autocomplete="off" placeholder="Choose a power verb above to unlock this step" disabled>
+      </div>
+      <p class="example" id="whatDidHelp">Choose a power verb first. It will appear here automatically, then you can add what you did.</p>
     </div>
 
     <div class="detail-grid" aria-label="Optional bullet details">
@@ -250,7 +269,7 @@ textarea{min-height:88px;resize:vertical}
       <div class="saved-list" id="savedList"></div>
     </div>
 
-    <p class="resource-link"><a href="https://careers.uiowa.edu/resumes" target="_blank" rel="noopener">See Pomerantz Career Center resume guidance, examples, and power verbs</a></p>
+    <p class="resource-link"><a href="https://careers.uiowa.edu/resumes" target="_blank" rel="noopener">See complete resume guidance and examples</a></p>
     <p class="disclaimer">Only include responsibilities, skills, numbers, and results that accurately reflect your experience.</p>
   </section>
 </main>
@@ -274,7 +293,8 @@ textarea{min-height:88px;resize:vertical}
     collaborate:{label:'Collaborate & coordinate', short:'Worked with others', hint:'teams, partners, stakeholders, schedules', verbs:[['Collaborate','Collaborated'],['Coordinate','Coordinated'],['Partner','Partnered'],['Contribute','Contributed'],['Consult','Consulted'],['Negotiate','Negotiated'],['Connect','Connected'],['Engage','Engaged']]}
   };
 
-  const helperOrder=['lead','communicate','support','create','analyze','solve','technical','collaborate'];
+  const starterVerbs=['Led','Organized','Created','Supported','Communicated','Analyzed','Improved'];
+  const moreVerbs=['Planned','Managed','Facilitated','Presented','Explained','Advised','Developed','Implemented','Evaluated','Researched','Resolved','Achieved','Tracked','Documented','Coordinated','Engaged'];
 
   let activeGroup='lead';
   let selectedVerb='';
@@ -292,12 +312,17 @@ textarea{min-height:88px;resize:vertical}
   const continueBtn=document.getElementById('continueBtn');
   const chooseStatus=document.getElementById('chooseStatus');
   const skillHandoff=document.getElementById('skillHandoff');
-  const skillHandoffText=document.getElementById('skillHandoffText');
-  const helperGrid=document.getElementById('helperGrid');
-  const verbHeading=document.getElementById('verbHeading');
+  const skillHandoffList=document.getElementById('skillHandoffList');
+  const starterVerbWrap=document.getElementById('starterVerbWrap');
+  const starterVerbList=document.getElementById('starterVerbList');
+  const moreVerbDetails=document.getElementById('moreVerbDetails');
   const verbList=document.getElementById('verbList');
   const customVerb=document.getElementById('customVerb');
   const whatDid=document.getElementById('whatDid');
+  const verbHeading=document.getElementById('verbHeading');
+  const verbInputShell=document.getElementById('verbInputShell');
+  const verbPrefix=document.getElementById('verbPrefix');
+  const whatDidHelp=document.getElementById('whatDidHelp');
   const scopeDetail=document.getElementById('scopeDetail');
   const howDetail=document.getElementById('howDetail');
   const resultDetail=document.getElementById('resultDetail');
@@ -359,34 +384,53 @@ textarea{min-height:88px;resize:vertical}
 
   function renderSkillHandoff(){
     const match=skillResultFor(experienceName.value);
-    if(!match||!Array.isArray(match.competencies)){skillHandoff.hidden=true;skillHandoffText.textContent='';return;}
-    const skills=[];
-    match.competencies.forEach(c=>(c.skills||[]).forEach(s=>{if(!skills.includes(s))skills.push(s);}));
-    const names=skills.length?skills.slice(0,10):match.competencies.map(c=>c.name).slice(0,6);
-    if(!names.length){skillHandoff.hidden=true;return;}
-    skillHandoffText.textContent=`Your transferable-skills brainstorm surfaced these power verbs: ${names.join(' • ')}. Use one only when it accurately describes the action in this bullet.`;
+    skillHandoffList.innerHTML='';
+    if(!match||!Array.isArray(match.competencies)){
+      skillHandoff.hidden=true;
+      starterVerbWrap.hidden=false;
+      moreVerbDetails.open=false;
+      return;
+    }
+    const verbs=[];
+    match.competencies.forEach(c=>(c.skills||[]).forEach(v=>{if(v&&!verbs.includes(v))verbs.push(v);}));
+    const names=verbs.slice(0,8);
+    if(!names.length){
+      skillHandoff.hidden=true;
+      starterVerbWrap.hidden=false;
+      moreVerbDetails.open=false;
+      return;
+    }
+    names.forEach(verb=>{
+      const btn=document.createElement('button');
+      btn.type='button';
+      btn.className='verb-btn';
+      btn.textContent=verb;
+      btn.setAttribute('aria-pressed',String(selectedVerb===verb&&customVerb.value.trim()===''));
+      btn.addEventListener('click',()=>{selectedVerb=verb;customVerb.value='';renderSkillHandoff();renderVerbs();updatePreview();});
+      skillHandoffList.appendChild(btn);
+    });
     skillHandoff.hidden=false;
+    starterVerbWrap.hidden=true;
+    if(!selectedVerb) moreVerbDetails.open=false;
   }
 
-  function renderHelpers(){
-    helperGrid.innerHTML='';
-    helperOrder.forEach(key=>{
-      const group=verbGroups[key];
-      const btn=document.createElement('button');btn.type='button';btn.className='helper-btn';btn.setAttribute('aria-pressed',String(activeGroup===key));
-      btn.innerHTML=`${escapeHtml(group.short)}<small>${escapeHtml(group.hint)}</small>`;
-      btn.addEventListener('click',()=>{activeGroup=key;selectedVerb='';customVerb.value='';renderHelpers();renderVerbs();updatePreview();});
-      helperGrid.appendChild(btn);
+  function renderStarterVerbs(){
+    starterVerbList.innerHTML='';
+    starterVerbs.forEach(verb=>{
+      const btn=document.createElement('button');
+      btn.type='button';btn.className='verb-btn';btn.textContent=verb;
+      btn.setAttribute('aria-pressed',String(selectedVerb===verb&&customVerb.value.trim()===''));
+      btn.addEventListener('click',()=>{selectedVerb=verb;customVerb.value='';renderStarterVerbs();renderSkillHandoff();renderVerbs();updatePreview();});
+      starterVerbList.appendChild(btn);
     });
   }
 
   function renderVerbs(){
     verbList.innerHTML='';
-    const group=verbGroups[activeGroup];
-    if(verbHeading)verbHeading.textContent=`Power verbs for ${group.label}`;
-    group.verbs.forEach(pair=>{
-      const verb=pair[1];
-      const btn=document.createElement('button');btn.type='button';btn.className='verb-btn';btn.textContent=verb;btn.setAttribute('aria-pressed',String(selectedVerb===verb&&customVerb.value.trim()===''));
-      btn.addEventListener('click',()=>{selectedVerb=verb;customVerb.value='';renderVerbs();updatePreview();});
+    moreVerbs.forEach(verb=>{
+      const btn=document.createElement('button');btn.type='button';btn.className='verb-btn';btn.textContent=verb;
+      btn.setAttribute('aria-pressed',String(selectedVerb===verb&&customVerb.value.trim()===''));
+      btn.addEventListener('click',()=>{selectedVerb=verb;customVerb.value='';renderStarterVerbs();renderSkillHandoff();renderVerbs();updatePreview();});
       verbList.appendChild(btn);
     });
   }
@@ -403,19 +447,31 @@ textarea{min-height:88px;resize:vertical}
     return typed;
   }
 
+  function updateWhatDidState(){
+    const verb=chosenVerb();
+    const hasVerb=!!verb;
+    whatDid.disabled=!hasVerb;
+    verbInputShell.classList.toggle('locked',!hasVerb);
+    verbPrefix.hidden=!hasVerb;
+    verbPrefix.textContent=hasVerb?verb:'';
+    whatDid.placeholder=hasVerb?'e.g., weekly community-building programs for residents':'Choose a power verb above to unlock this step';
+    whatDidHelp.textContent=hasVerb?'Your power verb starts the bullet. Add what you did after it.':'Choose a power verb first. It will appear here automatically, then you can add what you did.';
+  }
+
   function buildBullet(){
     const parts=[chosenVerb(),trimPiece(whatDid.value),trimPiece(scopeDetail.value),trimPiece(howDetail.value),trimPiece(resultDetail.value)].filter(Boolean);
     return parts.join(' ').replace(/\s+/g,' ').trim();
   }
 
   function updatePreview(){
+    updateWhatDidState();
     const bullet=buildBullet();
     if(!bullet){previewText.innerHTML='<span class="preview-empty">Choose a verb and describe what you did to start your bullet.</span>';}
     else{previewText.textContent=bullet;}
     reviewBtn.disabled=!(chosenVerb()&&trimPiece(whatDid.value));
   }
 
-  customVerb.addEventListener('input',()=>{if(customVerb.value.trim())selectedVerb='';renderVerbs();updatePreview();});
+  customVerb.addEventListener('input',()=>{if(customVerb.value.trim())selectedVerb='';renderStarterVerbs();renderSkillHandoff();renderVerbs();updatePreview();});
   [whatDid,scopeDetail,howDetail,resultDetail].forEach(el=>el.addEventListener('input',updatePreview));
 
   continueBtn.addEventListener('click',()=>{
@@ -424,10 +480,10 @@ textarea{min-height:88px;resize:vertical}
       chooseStatus.textContent='Add the experience this bullet is about.';
       experienceName.focus();return;
     }
-    renderSkillHandoff();renderHelpers();renderVerbs();updatePreview();
+    renderSkillHandoff();renderStarterVerbs();renderVerbs();updatePreview();
     buildPanel.hidden=false;reviewPanel.hidden=true;
     buildPanel.scrollIntoView({behavior:'smooth',block:'start'});
-    setTimeout(()=>whatDid.focus(),350);
+    setTimeout(()=>verbHeading.focus(),350);
   });
 
   backBtn.addEventListener('click',()=>{
@@ -522,19 +578,19 @@ textarea{min-height:88px;resize:vertical}
 
   function resetBulletFields(){
     selectedVerb='';customVerb.value='';whatDid.value='';scopeDetail.value='';howDetail.value='';resultDetail.value='';finalBullet.value='';reviewPanel.hidden=true;resultStatus.textContent='';buildStatus.textContent='';
-    renderVerbs();updatePreview();
+    renderSkillHandoff();renderStarterVerbs();renderVerbs();updatePreview();
   }
   function clearBulletFields(){
     resetBulletFields();
     buildPanel.hidden=false;
     buildPanel.scrollIntoView({behavior:'smooth',block:'start'});
-    setTimeout(()=>whatDid.focus(),350);
+    setTimeout(()=>verbHeading.focus(),350);
   }
   anotherBtn.addEventListener('click',clearBulletFields);
   differentBtn.addEventListener('click',()=>{
     resetBulletFields();
     experienceName.value='';experienceContext.value='';selectedRecentId=null;
-    skillHandoff.hidden=true;skillHandoffText.textContent='';
+    skillHandoff.hidden=true;starterVerbWrap.hidden=true;
     renderRecent();
     buildPanel.hidden=true;reviewPanel.hidden=true;chooseStatus.textContent='';
     choosePanel.scrollIntoView({behavior:'smooth',block:'start'});
@@ -546,7 +602,7 @@ textarea{min-height:88px;resize:vertical}
     if(!selected||normalize(experienceName.value)!==normalize(selected.experienceName)){selectedRecentId=null;renderRecent();}
   });
 
-  loadHandoffs();setTiming('past');renderHelpers();renderVerbs();updatePreview();
+  loadHandoffs();renderStarterVerbs();renderVerbs();updatePreview();
 })();
 </script>
 </body>
