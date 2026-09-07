@@ -42,7 +42,6 @@ h3{font-size:1rem;line-height:1.3;margin:0 0 5px}
 p{margin:0 0 12px}
 .lede{font-size:1.08rem;max-width:770px;margin-bottom:12px}
 .meta{font-size:.9rem;color:var(--cool-gray);margin:0}
-.notice{margin-top:18px;padding:13px 15px;border-left:5px solid var(--iowa-gold);background:var(--soft-gold);border-radius:0 11px 11px 0}
 .section-copy{color:#2F3032;max-width:780px;margin-bottom:16px}
 .step-label{display:flex;align-items:center;gap:9px;margin-bottom:8px;font-size:.78rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
 .step-number{width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--iowa-gold);font-weight:700}
@@ -84,7 +83,9 @@ textarea{min-height:88px;resize:vertical}
 .verb-filter{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 11px}
 .verb-list{display:flex;flex-wrap:wrap;gap:7px}
 .custom-verb{margin-top:11px;max-width:340px}
-.verb-first-note{margin:0 0 14px;padding:11px 13px;background:var(--soft);border-radius:11px;font-size:.9rem}
+.bullet-nudge{font-size:.88rem;color:#454648;margin:0 0 14px}
+.formula-strip{margin:14px 0 0;padding:9px 11px;background:var(--soft);border-radius:10px;font-size:.86rem;color:#343536}
+.formula-strip strong{color:#000}
 .what-did-step{margin-top:16px}
 .verb-input-shell{display:flex;align-items:stretch;border:1.5px solid #B8B8B8;border-radius:10px;background:#fff;overflow:hidden}
 .verb-input-shell:focus-within{outline:3px solid var(--iowa-gold);outline-offset:3px}
@@ -103,16 +104,22 @@ textarea{min-height:88px;resize:vertical}
 .preview-text{font-size:1.02rem;font-weight:500;overflow-wrap:anywhere}
 .preview-empty{color:var(--cool-gray);font-weight:400}
 .review-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:15px 0}
-.review-card{border:1px solid #D9D9D9;border-radius:12px;padding:13px;background:#fff}
+.review-card{border:1px solid #D9D9D9;border-radius:12px;padding:13px;background:#fff;position:relative}
 .review-card strong{display:block;margin-bottom:3px}
 .review-card p{font-size:.87rem;color:#424345;margin:0}
 .review-card.good{background:#FAFAFA}
+.review-card.attention{border-color:#D6B100;background:#FFF9E6;box-shadow:inset 4px 0 0 var(--iowa-gold)}
+.review-status{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;font-weight:700;letter-spacing:.02em;margin-bottom:7px;color:#555}
+.review-status .marker{font-size:.86rem;line-height:1}
+.review-card.attention .review-status{color:#5A4A00}
+.review-card.attention .review-status .marker{color:#8A6D00}
+.review-card.good .review-status .marker{color:#777}
 .tip-box{margin:14px 0;padding:13px 15px;background:var(--soft);border-radius:12px;font-size:.9rem}
 .final-box label{display:block;margin-bottom:6px}
 .final-box textarea{min-height:105px;font-size:1rem}
 .saved-wrap{margin-top:18px;padding-top:17px;border-top:1px solid #E6E6E6}
 .saved-wrap h3{font-size:1.02rem;margin-bottom:3px}
-.saved-list{display:grid;gap:9px;margin-top:10px}
+.saved-list{display:grid;gap:9px;margin-top:10px}.saved-wrap .tip-box{margin-top:14px;margin-bottom:8px}
 .saved-card{border:1px solid #D8D8D8;border-radius:12px;padding:12px;background:#FAFAFA}
 .saved-bullet{font-size:.92rem;overflow-wrap:anywhere}
 .saved-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
@@ -135,20 +142,18 @@ textarea{min-height:88px;resize:vertical}
   <section class="intro" aria-labelledby="page-title">
     <div class="gold-mark" aria-hidden="true"></div>
     <h1 id="page-title">Build a Strong Resume Bullet</h1>
-    <p class="lede">Start with one thing you actually did. Add the details that show how, why, for whom, or at what scale—and turn it into a concise resume bullet. Build additional bullets for the same experience or move on to another experience when you are ready.</p>
-    <p class="meta">You do not need a dramatic accomplishment or a perfect number. Specific, accurate details are more useful than inflated language.</p>
-    <div class="notice"><strong>Use the formula as a guide, not a requirement.</strong> A strong starting point is: action verb + what you did + useful detail about how, why, scope, or result.</div>
+    <p class="lede">Build one strong bullet at a time. Repeat for different skills, contributions, or accomplishments.</p>
   </section>
 
   <section class="panel" id="choosePanel" aria-labelledby="choose-title">
     <div class="step-label"><span class="step-number">1</span> Choose</div>
     <h2 id="choose-title">Which experience is this bullet about?</h2>
-    <p class="section-copy">Use a recent experience if one is available, or enter something different. This tool works on its own.</p>
+    <p class="section-copy">Choose a recent experience or enter one below.</p>
 
     <div class="recent-wrap" id="recentWrap" hidden>
       <div class="recent-label">Use a recent experience</div>
       <div class="recent-list" id="recentList" aria-label="Recent experiences"></div>
-      <p class="recent-note">Recent work appears only when it is available on this device. You can always enter something different.</p>
+      <p class="recent-note">Recent work appears only when available on this device.</p>
     </div>
 
     <div class="form-grid">
@@ -162,22 +167,16 @@ textarea{min-height:88px;resize:vertical}
       </div>
     </div>
 
-    <div class="notice" style="margin-top:14px"><strong>Bullets use past tense.</strong> Use a past-tense action verb even when the experience is current so your bullets stay consistent.</div>
-
-    <div class="actions">
-      <button class="btn primary" id="continueBtn" type="button">Continue to My Bullet</button>
-    </div>
     <div class="status" id="chooseStatus" role="status" aria-live="polite"></div>
   </section>
 
   <section class="panel" id="buildPanel" aria-labelledby="build-title" hidden>
     <div class="step-label"><span class="step-number">2</span> Build</div>
-    <h2 id="build-title">Build one bullet at a time</h2>
-    <p class="section-copy"><strong>Plan to build more than one bullet for most experiences.</strong> Each bullet should highlight a different relevant skill, contribution, or accomplishment. Build one strong bullet now, then come back for another.</p>
+    <h2 id="build-title">Build your bullet</h2>
+    <p class="bullet-nudge"><strong>One bullet = one contribution.</strong> Finish this one, then build another for a different skill or accomplishment.</p>
 
-    <div class="verb-first-note"><strong>Start here:</strong> Choose a power verb first. Your selection will automatically appear at the beginning of the next step.</div>
     <h3 id="verbHeading" tabindex="-1">Choose a power verb</h3>
-    <p class="example">Pick the verb that best describes your action.</p>
+    <p class="example">Use past tense. Pick the verb that best describes your action. A job description can also give you ideas—use verbs that accurately match what you did.</p>
 
     <div class="skill-handoff" id="skillHandoff" hidden>
       <strong>Your suggested power verbs</strong>
@@ -209,6 +208,8 @@ textarea{min-height:88px;resize:vertical}
       </div>
       <p class="example" id="whatDidHelp">Choose a power verb first. It will appear here automatically, then you can add what you did.</p>
     </div>
+
+    <div class="formula-strip"><strong>Formula:</strong> Power verb + what you did + useful detail about how, why, scope, or result</div>
 
     <div class="detail-grid" aria-label="Optional bullet details">
       <div class="detail-card">
@@ -243,7 +244,7 @@ textarea{min-height:88px;resize:vertical}
   <section class="panel" id="reviewPanel" aria-labelledby="review-title" hidden>
     <div class="step-label"><span class="step-number">3</span> Review</div>
     <h2 id="review-title">Make it specific and accurate</h2>
-    <p class="section-copy">A good resume bullet is descriptive but brief. You do not need every possible detail—keep the ones that help a reader understand your contribution.</p>
+    <p class="section-copy">Keep only the details that make your contribution clearer.</p>
 
     <div class="review-grid" id="reviewGrid"></div>
 
@@ -254,19 +255,27 @@ textarea{min-height:88px;resize:vertical}
       <textarea id="finalBullet"></textarea>
     </div>
 
-    <div class="actions">
+    <div class="actions" id="decisionActions">
       <button class="btn primary" id="keepBtn" type="button">Keep This Bullet</button>
-      <button class="btn" id="copyBtn" type="button">Copy Bullet</button>
-      <button class="btn" id="printBtn" type="button">Print / Save</button>
-      <button class="btn soft" id="anotherBtn" type="button">Build Another for This Experience</button>
-      <button class="btn soft" id="differentBtn" type="button">Build for a Different Experience</button>
+      <button class="btn soft" id="discardBtn" type="button">Discard This Bullet</button>
     </div>
     <div class="status" id="resultStatus" role="status" aria-live="polite"></div>
 
-    <div class="saved-wrap" id="savedWrap">
-      <h3>Bullets you’ve kept for this experience</h3>
-      <p class="example">Recent work may be available to other My Career Path tools on this device. Keep your own copy too.</p>
-      <div class="saved-list" id="savedList"></div>
+    <div id="afterDecision" hidden>
+      <div class="actions">
+        <button class="btn soft" id="anotherBtn" type="button">Build Another for This Experience</button>
+        <button class="btn soft" id="differentBtn" type="button">Build for a Different Experience</button>
+      </div>
+
+      <div class="saved-wrap" id="savedWrap">
+        <h3>Bullets you’ve kept for this experience</h3>
+        <div class="saved-list" id="savedList"></div>
+        <div class="tip-box" id="saveReminder"><strong>Save a copy before you leave.</strong> Recent work may carry into other tools on this device when available, but browser storage is not guaranteed.</div>
+        <div class="actions">
+          <button class="btn" id="copyAllBtn" type="button" disabled>Copy My Bullets</button>
+          <button class="btn" id="printBtn" type="button" disabled>Print / Save</button>
+        </div>
+      </div>
     </div>
 
     <p class="resource-link"><a href="https://careers.uiowa.edu/resumes" target="_blank" rel="noopener">See complete resume guidance and examples</a></p>
@@ -293,6 +302,8 @@ textarea{min-height:88px;resize:vertical}
     collaborate:{label:'Collaborate & coordinate', short:'Worked with others', hint:'teams, partners, stakeholders, schedules', verbs:[['Collaborate','Collaborated'],['Coordinate','Coordinated'],['Partner','Partnered'],['Contribute','Contributed'],['Consult','Consulted'],['Negotiate','Negotiated'],['Connect','Connected'],['Engage','Engaged']]}
   };
 
+  const afterDecision=document.getElementById('afterDecision');
+  const discardBtn=document.getElementById('discardBtn');
   const starterVerbs=['Led','Organized','Created','Supported','Communicated','Analyzed','Improved'];
   const moreVerbs=['Planned','Managed','Facilitated','Presented','Explained','Advised','Developed','Implemented','Evaluated','Researched','Resolved','Achieved','Tracked','Documented','Coordinated','Engaged'];
 
@@ -309,7 +320,6 @@ textarea{min-height:88px;resize:vertical}
   const recentList=document.getElementById('recentList');
   const experienceName=document.getElementById('experienceName');
   const experienceContext=document.getElementById('experienceContext');
-  const continueBtn=document.getElementById('continueBtn');
   const chooseStatus=document.getElementById('chooseStatus');
   const skillHandoff=document.getElementById('skillHandoff');
   const skillHandoffList=document.getElementById('skillHandoffList');
@@ -334,7 +344,7 @@ textarea{min-height:88px;resize:vertical}
   const quantTip=document.getElementById('quantTip');
   const finalBullet=document.getElementById('finalBullet');
   const keepBtn=document.getElementById('keepBtn');
-  const copyBtn=document.getElementById('copyBtn');
+  const copyAllBtn=document.getElementById('copyAllBtn');
   const printBtn=document.getElementById('printBtn');
   const anotherBtn=document.getElementById('anotherBtn');
   const differentBtn=document.getElementById('differentBtn');
@@ -372,6 +382,7 @@ textarea{min-height:88px;resize:vertical}
         experienceContext.value=exp.context||'';
         renderRecent();
         chooseStatus.textContent='';
+        prepareBuildForExperience();
       });
       recentList.appendChild(btn);
     });
@@ -474,17 +485,12 @@ textarea{min-height:88px;resize:vertical}
   customVerb.addEventListener('input',()=>{if(customVerb.value.trim())selectedVerb='';renderStarterVerbs();renderSkillHandoff();renderVerbs();updatePreview();});
   [whatDid,scopeDetail,howDetail,resultDetail].forEach(el=>el.addEventListener('input',updatePreview));
 
-  continueBtn.addEventListener('click',()=>{
-    chooseStatus.textContent='';
-    if(!experienceName.value.trim()){
-      chooseStatus.textContent='Add the experience this bullet is about.';
-      experienceName.focus();return;
-    }
+  function prepareBuildForExperience(){
+    const hasExperience=!!experienceName.value.trim();
+    buildPanel.hidden=!hasExperience;
+    if(!hasExperience){reviewPanel.hidden=true;return;}
     renderSkillHandoff();renderStarterVerbs();renderVerbs();updatePreview();
-    buildPanel.hidden=false;reviewPanel.hidden=true;
-    buildPanel.scrollIntoView({behavior:'smooth',block:'start'});
-    setTimeout(()=>verbHeading.focus(),350);
-  });
+  }
 
   backBtn.addEventListener('click',()=>{
     buildPanel.hidden=true;reviewPanel.hidden=true;chooseStatus.textContent='';
@@ -502,8 +508,12 @@ textarea{min-height:88px;resize:vertical}
     else{cards.push({title:'Result is optional',body:'Add an outcome or purpose when you can support it. Do not invent a result just to complete the formula.',good:false});}
     reviewGrid.innerHTML='';
     cards.forEach(c=>{
-      const div=document.createElement('div');div.className=`review-card${c.good?' good':''}`;
-      div.innerHTML=`<strong>${escapeHtml(c.title)}</strong><p>${escapeHtml(c.body)}</p>`;reviewGrid.appendChild(div);
+      const div=document.createElement('div');
+      div.className=`review-card ${c.good?'good':'attention'}`;
+      const status=c.good
+        ? '<div class="review-status"><span class="marker" aria-hidden="true">●</span><span>Included</span></div>'
+        : '<div class="review-status"><span class="marker" aria-hidden="true">◆</span><span>Consider</span></div>';
+      div.innerHTML=`${status}<strong>${escapeHtml(c.title)}</strong><p>${escapeHtml(c.body)}</p>`;reviewGrid.appendChild(div);
     });
     const hasNumber=/\d/.test([scopeDetail.value,howDetail.value,resultDetail.value,whatDid.value].join(' '));
     quantTip.innerHTML=hasNumber
@@ -514,7 +524,7 @@ textarea{min-height:88px;resize:vertical}
   reviewBtn.addEventListener('click',()=>{
     buildStatus.textContent='';
     if(!chosenVerb()||!trimPiece(whatDid.value)){buildStatus.textContent='Choose a verb and describe what you did first.';return;}
-    finalBullet.value=buildBullet();renderReview();renderSaved();reviewPanel.hidden=false;
+    finalBullet.value=buildBullet();renderReview();renderSaved();afterDecision.hidden=true;reviewPanel.hidden=false;
     reviewPanel.scrollIntoView({behavior:'smooth',block:'start'});
   });
 
@@ -525,7 +535,8 @@ textarea{min-height:88px;resize:vertical}
 
   function renderSaved(){
     const saved=savedForExperience();savedList.innerHTML='';
-    if(!saved.length){savedList.innerHTML='<div class="empty">No bullets kept yet. When you keep one, it will appear here if browser storage is available.</div>';return;}
+    copyAllBtn.disabled=!saved.length;printBtn.disabled=!saved.length;
+    if(!saved.length){savedList.innerHTML='<div class="empty">No bullets kept yet. Keep each finished bullet here, then save or copy the set when you are done with this experience.</div>';return;}
     saved.forEach(item=>{
       const card=document.createElement('div');card.className='saved-card';
       const text=document.createElement('div');text.className='saved-bullet';text.textContent=`• ${item.bullet}`;
@@ -557,6 +568,7 @@ textarea{min-height:88px;resize:vertical}
     const stored=safeWrite(BULLET_BANK_KEY,bank);
     resultStatus.textContent=stored?(duplicate?'This bullet is already in your recent work.':'Kept this bullet on this device.'):'Your browser blocked local saving. Copy or Print / Save the bullet instead.';
     renderSaved();
+    afterDecision.hidden=false;
   }
 
   function removeSaved(id){
@@ -573,11 +585,20 @@ textarea{min-height:88px;resize:vertical}
   }
 
   keepBtn.addEventListener('click',keepBullet);
-  copyBtn.addEventListener('click',()=>copyText(trimPiece(finalBullet.value),'Copied your bullet.'));
+  discardBtn.addEventListener('click',()=>{
+    resultStatus.textContent='Discarded. Build another bullet or finish with the bullets you’ve already kept.';
+    afterDecision.hidden=false;
+    renderSaved();
+  });
+  copyAllBtn.addEventListener('click',()=>{
+    const saved=savedForExperience();
+    if(!saved.length){resultStatus.textContent='Keep at least one bullet first.';return;}
+    copyText(saved.map(item=>'• '+item.bullet).join('\n'),'Copied your saved bullets.');
+  });
   printBtn.addEventListener('click',()=>window.print());
 
   function resetBulletFields(){
-    selectedVerb='';customVerb.value='';whatDid.value='';scopeDetail.value='';howDetail.value='';resultDetail.value='';finalBullet.value='';reviewPanel.hidden=true;resultStatus.textContent='';buildStatus.textContent='';
+    selectedVerb='';customVerb.value='';whatDid.value='';scopeDetail.value='';howDetail.value='';resultDetail.value='';finalBullet.value='';reviewPanel.hidden=true;resultStatus.textContent='';buildStatus.textContent='';afterDecision.hidden=true;
     renderSkillHandoff();renderStarterVerbs();renderVerbs();updatePreview();
   }
   function clearBulletFields(){
@@ -600,9 +621,11 @@ textarea{min-height:88px;resize:vertical}
   experienceName.addEventListener('input',()=>{
     const selected=recentExperiences.find((exp,index)=>(exp.id||`${exp.experienceName}-${index}`)===selectedRecentId);
     if(!selected||normalize(experienceName.value)!==normalize(selected.experienceName)){selectedRecentId=null;renderRecent();}
+    chooseStatus.textContent='';
+    prepareBuildForExperience();
   });
 
-  loadHandoffs();renderStarterVerbs();renderVerbs();updatePreview();
+  loadHandoffs();renderStarterVerbs();renderVerbs();updatePreview();prepareBuildForExperience();
 })();
 </script>
 </body>
