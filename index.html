@@ -126,7 +126,7 @@ textarea{min-height:88px;resize:vertical}
   <section class="intro" aria-labelledby="page-title">
     <div class="gold-mark" aria-hidden="true"></div>
     <h1 id="page-title">Build a Strong Resume Bullet</h1>
-    <p class="lede">Start with one thing you actually did. Add the details that show how, why, for whom, or at what scale—and turn it into a concise resume bullet.</p>
+    <p class="lede">Start with one thing you actually did. Add the details that show how, why, for whom, or at what scale—and turn it into a concise resume bullet. Build additional bullets for the same experience or move on to another experience when you are ready.</p>
     <p class="meta">You do not need a dramatic accomplishment or a perfect number. Specific, accurate details are more useful than inflated language.</p>
     <div class="notice"><strong>Use the formula as a guide, not a requirement.</strong> A strong starting point is: action verb + what you did + useful detail about how, why, scope, or result.</div>
   </section>
@@ -153,14 +153,7 @@ textarea{min-height:88px;resize:vertical}
       </div>
     </div>
 
-    <div class="field" style="margin-top:14px">
-      <label>Is this experience current or completed?</label>
-      <div class="choice-row" role="group" aria-label="Experience timing">
-        <button class="choice-btn" id="currentBtn" type="button" aria-pressed="false">Current</button>
-        <button class="choice-btn" id="pastBtn" type="button" aria-pressed="true">Completed / past</button>
-      </div>
-      <p class="example">This only changes the verb tense suggestions. Past experiences generally use past-tense verbs; current experiences may use present tense.</p>
-    </div>
+    <div class="notice" style="margin-top:14px"><strong>Bullets use past tense.</strong> Use a past-tense action verb even when the experience is current so your bullets stay consistent.</div>
 
     <div class="actions">
       <button class="btn primary" id="continueBtn" type="button">Continue to My Bullet</button>
@@ -174,21 +167,20 @@ textarea{min-height:88px;resize:vertical}
     <p class="section-copy">Focus on one responsibility, contribution, or accomplishment. You can build another bullet for the same experience afterward.</p>
 
     <div class="skill-handoff" id="skillHandoff" hidden>
-      <strong>Recent skills from this experience</strong>
+      <strong>Recent power verbs from this experience</strong>
       <p id="skillHandoffText"></p>
     </div>
 
-    <h3>Need help finding a starting verb?</h3>
-    <p class="example" style="margin-bottom:10px">Choose the kind of contribution you are describing. This only narrows the verb ideas.</p>
+    <h3>What kind of contribution are you describing?</h3>
+    <p class="example" style="margin-bottom:10px">Choose one to narrow the power-verb ideas. These are contribution types, not another competency rating.</p>
     <div class="helper-grid" id="helperGrid"></div>
 
     <div class="verb-area">
-      <h3>Choose a power verb</h3>
+      <h3 id="verbHeading">Power verbs</h3>
       <p class="example">Pick the verb that most accurately describes what you did—not the one that sounds most impressive.</p>
-      <div class="verb-filter" id="verbFilter" aria-label="Power verb categories"></div>
       <div class="verb-list" id="verbList" aria-label="Power verbs"></div>
       <div class="field custom-verb">
-        <label for="customVerb">Or enter your own verb <span class="hint">(optional)</span></label>
+        <label for="customVerb">Or enter your own past-tense verb <span class="hint">(optional)</span></label>
         <input id="customVerb" type="text" autocomplete="off" placeholder="e.g., Reconciled">
       </div>
     </div>
@@ -248,6 +240,7 @@ textarea{min-height:88px;resize:vertical}
       <button class="btn" id="copyBtn" type="button">Copy Bullet</button>
       <button class="btn" id="printBtn" type="button">Print / Save</button>
       <button class="btn soft" id="anotherBtn" type="button">Build Another for This Experience</button>
+      <button class="btn soft" id="differentBtn" type="button">Build for a Different Experience</button>
     </div>
     <div class="status" id="resultStatus" role="status" aria-live="polite"></div>
 
@@ -283,7 +276,6 @@ textarea{min-height:88px;resize:vertical}
 
   const helperOrder=['lead','communicate','support','create','analyze','solve','technical','collaborate'];
 
-  let timing='past';
   let activeGroup='lead';
   let selectedVerb='';
   let recentExperiences=[];
@@ -297,14 +289,12 @@ textarea{min-height:88px;resize:vertical}
   const recentList=document.getElementById('recentList');
   const experienceName=document.getElementById('experienceName');
   const experienceContext=document.getElementById('experienceContext');
-  const currentBtn=document.getElementById('currentBtn');
-  const pastBtn=document.getElementById('pastBtn');
   const continueBtn=document.getElementById('continueBtn');
   const chooseStatus=document.getElementById('chooseStatus');
   const skillHandoff=document.getElementById('skillHandoff');
   const skillHandoffText=document.getElementById('skillHandoffText');
   const helperGrid=document.getElementById('helperGrid');
-  const verbFilter=document.getElementById('verbFilter');
+  const verbHeading=document.getElementById('verbHeading');
   const verbList=document.getElementById('verbList');
   const customVerb=document.getElementById('customVerb');
   const whatDid=document.getElementById('whatDid');
@@ -322,6 +312,7 @@ textarea{min-height:88px;resize:vertical}
   const copyBtn=document.getElementById('copyBtn');
   const printBtn=document.getElementById('printBtn');
   const anotherBtn=document.getElementById('anotherBtn');
+  const differentBtn=document.getElementById('differentBtn');
   const resultStatus=document.getElementById('resultStatus');
   const savedList=document.getElementById('savedList');
 
@@ -361,17 +352,6 @@ textarea{min-height:88px;resize:vertical}
     });
   }
 
-  function setTiming(value){
-    timing=value;
-    currentBtn.setAttribute('aria-pressed',String(value==='current'));
-    pastBtn.setAttribute('aria-pressed',String(value==='past'));
-    selectedVerb='';customVerb.value='';
-    renderVerbs();updatePreview();
-  }
-
-  currentBtn.addEventListener('click',()=>setTiming('current'));
-  pastBtn.addEventListener('click',()=>setTiming('past'));
-
   function skillResultFor(name){
     const target=normalize(name);
     return skillsBank.find(item=>normalize(item.experienceName)===target)||null;
@@ -384,7 +364,7 @@ textarea{min-height:88px;resize:vertical}
     match.competencies.forEach(c=>(c.skills||[]).forEach(s=>{if(!skills.includes(s))skills.push(s);}));
     const names=skills.length?skills.slice(0,10):match.competencies.map(c=>c.name).slice(0,6);
     if(!names.length){skillHandoff.hidden=true;return;}
-    skillHandoffText.textContent=`You previously connected this experience with ${names.join(' • ')}. Use these only as reminders while choosing an accurate action verb and details.`;
+    skillHandoffText.textContent=`Your transferable-skills brainstorm surfaced these power verbs: ${names.join(' • ')}. Use one only when it accurately describes the action in this bullet.`;
     skillHandoff.hidden=false;
   }
 
@@ -394,33 +374,34 @@ textarea{min-height:88px;resize:vertical}
       const group=verbGroups[key];
       const btn=document.createElement('button');btn.type='button';btn.className='helper-btn';btn.setAttribute('aria-pressed',String(activeGroup===key));
       btn.innerHTML=`${escapeHtml(group.short)}<small>${escapeHtml(group.hint)}</small>`;
-      btn.addEventListener('click',()=>{activeGroup=key;selectedVerb='';customVerb.value='';renderHelpers();renderFilters();renderVerbs();updatePreview();});
+      btn.addEventListener('click',()=>{activeGroup=key;selectedVerb='';customVerb.value='';renderHelpers();renderVerbs();updatePreview();});
       helperGrid.appendChild(btn);
-    });
-  }
-
-  function renderFilters(){
-    verbFilter.innerHTML='';
-    helperOrder.forEach(key=>{
-      const group=verbGroups[key];
-      const btn=document.createElement('button');btn.type='button';btn.className='filter-btn';btn.textContent=group.label;btn.setAttribute('aria-pressed',String(activeGroup===key));
-      btn.addEventListener('click',()=>{activeGroup=key;selectedVerb='';customVerb.value='';renderHelpers();renderFilters();renderVerbs();updatePreview();});
-      verbFilter.appendChild(btn);
     });
   }
 
   function renderVerbs(){
     verbList.innerHTML='';
     const group=verbGroups[activeGroup];
+    if(verbHeading)verbHeading.textContent=`Power verbs for ${group.label}`;
     group.verbs.forEach(pair=>{
-      const verb=timing==='current'?pair[0]:pair[1];
+      const verb=pair[1];
       const btn=document.createElement('button');btn.type='button';btn.className='verb-btn';btn.textContent=verb;btn.setAttribute('aria-pressed',String(selectedVerb===verb&&customVerb.value.trim()===''));
       btn.addEventListener('click',()=>{selectedVerb=verb;customVerb.value='';renderVerbs();updatePreview();});
       verbList.appendChild(btn);
     });
   }
 
-  function chosenVerb(){return trimPiece(customVerb.value)||selectedVerb;}
+  function chosenVerb(){
+    const typed=trimPiece(customVerb.value);
+    if(!typed)return selectedVerb;
+    const lower=typed.toLowerCase();
+    for(const group of Object.values(verbGroups)){
+      for(const [present,past] of group.verbs){
+        if(lower===present.toLowerCase())return past;
+      }
+    }
+    return typed;
+  }
 
   function buildBullet(){
     const parts=[chosenVerb(),trimPiece(whatDid.value),trimPiece(scopeDetail.value),trimPiece(howDetail.value),trimPiece(resultDetail.value)].filter(Boolean);
@@ -443,7 +424,7 @@ textarea{min-height:88px;resize:vertical}
       chooseStatus.textContent='Add the experience this bullet is about.';
       experienceName.focus();return;
     }
-    renderSkillHandoff();renderHelpers();renderFilters();renderVerbs();updatePreview();
+    renderSkillHandoff();renderHelpers();renderVerbs();updatePreview();
     buildPanel.hidden=false;reviewPanel.hidden=true;
     buildPanel.scrollIntoView({behavior:'smooth',block:'start'});
     setTimeout(()=>whatDid.focus(),350);
@@ -456,7 +437,7 @@ textarea{min-height:88px;resize:vertical}
 
   function renderReview(){
     const cards=[];
-    cards.push({title:'Starts with an action verb',body:`Your draft begins with “${chosenVerb()}.”`,good:true});
+    cards.push({title:'Starts with a past-tense action verb',body:`Your draft begins with “${chosenVerb()}.”`,good:true});
     cards.push({title:'Says what you did',body:trimPiece(whatDid.value),good:true});
     const details=[trimPiece(scopeDetail.value),trimPiece(howDetail.value),trimPiece(resultDetail.value)].filter(Boolean);
     if(details.length){cards.push({title:'Adds useful context',body:'You included detail about scope, method, purpose, or result.',good:true});}
@@ -539,18 +520,33 @@ textarea{min-height:88px;resize:vertical}
   copyBtn.addEventListener('click',()=>copyText(trimPiece(finalBullet.value),'Copied your bullet.'));
   printBtn.addEventListener('click',()=>window.print());
 
-  function clearBulletFields(){
+  function resetBulletFields(){
     selectedVerb='';customVerb.value='';whatDid.value='';scopeDetail.value='';howDetail.value='';resultDetail.value='';finalBullet.value='';reviewPanel.hidden=true;resultStatus.textContent='';buildStatus.textContent='';
-    renderVerbs();updatePreview();buildPanel.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>whatDid.focus(),350);
+    renderVerbs();updatePreview();
+  }
+  function clearBulletFields(){
+    resetBulletFields();
+    buildPanel.hidden=false;
+    buildPanel.scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(()=>whatDid.focus(),350);
   }
   anotherBtn.addEventListener('click',clearBulletFields);
+  differentBtn.addEventListener('click',()=>{
+    resetBulletFields();
+    experienceName.value='';experienceContext.value='';selectedRecentId=null;
+    skillHandoff.hidden=true;skillHandoffText.textContent='';
+    renderRecent();
+    buildPanel.hidden=true;reviewPanel.hidden=true;chooseStatus.textContent='';
+    choosePanel.scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(()=>experienceName.focus(),350);
+  });
 
   experienceName.addEventListener('input',()=>{
     const selected=recentExperiences.find((exp,index)=>(exp.id||`${exp.experienceName}-${index}`)===selectedRecentId);
     if(!selected||normalize(experienceName.value)!==normalize(selected.experienceName)){selectedRecentId=null;renderRecent();}
   });
 
-  loadHandoffs();setTiming('past');renderHelpers();renderFilters();renderVerbs();updatePreview();
+  loadHandoffs();setTiming('past');renderHelpers();renderVerbs();updatePreview();
 })();
 </script>
 </body>
