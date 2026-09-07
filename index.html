@@ -23,14 +23,14 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--canvas);color:#000;font:16px/1.5 "Roboto",Arial,Helvetica,sans-serif}
+body{margin:0;background:#fff;color:#000;font:16px/1.5 "Roboto",Arial,Helvetica,sans-serif}
 button,input,textarea{font:inherit}
 button{color:inherit}
 a{color:var(--link)}
 :focus-visible{outline:3px solid var(--iowa-gold);outline-offset:3px}
 .skip-link{position:absolute;left:-9999px;top:8px;z-index:1000;background:#fff;color:#000;border:2px solid #000;padding:9px 12px;border-radius:6px}
 .skip-link:focus{left:8px}
-.shell{max-width:920px;margin:0 auto;padding:22px 18px 72px}
+.shell{max-width:920px;margin:0 auto;padding:22px 18px 10px}
 .intro,.panel{background:var(--paper);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow)}
 .intro{padding:28px 28px 24px}
 .panel{padding:24px;margin-top:16px}
@@ -128,7 +128,7 @@ textarea{min-height:88px;resize:vertical}
 .disclaimer{font-size:.82rem;color:var(--cool-gray);margin-top:12px}
 [hidden]{display:none!important}
 @media(max-width:760px){
-  .shell{padding:12px 10px 48px}.intro,.panel{padding:20px 17px;border-radius:16px}.form-grid,.detail-grid,.review-grid{grid-template-columns:1fr}.helper-grid{grid-template-columns:1fr 1fr}
+  .shell{padding:12px 10px 8px}.intro,.panel{padding:20px 17px;border-radius:16px}.form-grid,.detail-grid,.review-grid{grid-template-columns:1fr}.helper-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:440px){.helper-grid{grid-template-columns:1fr}.actions .btn{width:100%}.recent-btn{width:100%}.choice-btn{flex:1}.saved-actions .btn{width:auto;flex:1}}
 @media print{
