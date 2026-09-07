@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Build a Resume Bullet | My Career Path</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --iowa-black:#000;
+  --iowa-gold:#FFCD00;
+  --cool-gray:#63666A;
+  --paper:#fff;
+  --canvas:#F7F7F7;
+  --soft:#F1F1F1;
+  --soft-gold:#FFF8D6;
+  --border:#D6D6D6;
+  --link:#00558C;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 22px rgba(0,0,0,.045);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--canvas);color:#000;font:16px/1.5 "Roboto",Arial,Helvetica,sans-serif}
+button,input,textarea{font:inherit}
+button{color:inherit}
+a{color:var(--link)}
+:focus-visible{outline:3px solid var(--iowa-gold);outline-offset:3px}
+.skip-link{position:absolute;left:-9999px;top:8px;z-index:1000;background:#fff;color:#000;border:2px solid #000;padding:9px 12px;border-radius:6px}
+.skip-link:focus{left:8px}
+.shell{max-width:920px;margin:0 auto;padding:22px 18px 72px}
+.intro,.panel{background:var(--paper);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow)}
+.intro{padding:28px 28px 24px}
+.panel{padding:24px;margin-top:16px}
+.gold-mark{width:42px;height:7px;background:var(--iowa-gold);border-radius:999px;margin-bottom:14px}
+h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700;color:#000}
+h1{font-size:clamp(2.15rem,5vw,3.25rem);line-height:1;margin:0 0 10px;letter-spacing:-.025em}
+h2{font-size:1.62rem;line-height:1.12;margin:0 0 8px}
+h3{font-size:1rem;line-height:1.3;margin:0 0 5px}
+p{margin:0 0 12px}
+.lede{font-size:1.08rem;max-width:770px;margin-bottom:12px}
+.meta{font-size:.9rem;color:var(--cool-gray);margin:0}
+.notice{margin-top:18px;padding:13px 15px;border-left:5px solid var(--iowa-gold);background:var(--soft-gold);border-radius:0 11px 11px 0}
+.section-copy{color:#2F3032;max-width:780px;margin-bottom:16px}
+.step-label{display:flex;align-items:center;gap:9px;margin-bottom:8px;font-size:.78rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.step-number{width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--iowa-gold);font-weight:700}
+.field{display:flex;flex-direction:column;gap:6px}
+label{font-weight:700}
+.hint{font-size:.84rem;color:var(--cool-gray);font-weight:400}
+input[type="text"],textarea{width:100%;border:1.5px solid #B8B8B8;border-radius:10px;padding:11px 12px;background:#fff;color:#000}
+input[type="text"]{min-height:46px}
+textarea{min-height:88px;resize:vertical}
+.example{font-size:.84rem;color:var(--cool-gray);margin:7px 0 0}
+.form-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:12px}
+.recent-wrap{margin:0 0 16px;padding:14px;background:var(--soft);border-radius:12px}
+.recent-label{font-size:.84rem;font-weight:700;margin-bottom:8px}
+.recent-list{display:flex;flex-wrap:wrap;gap:8px}
+.recent-btn{border:1px solid #BFC0C1;background:#fff;border-radius:999px;padding:8px 11px;font-size:.86rem;font-weight:700;cursor:pointer;text-align:left}
+.recent-btn:hover{border-color:#666}
+.recent-btn[aria-pressed="true"]{background:#fff;border-color:#000;box-shadow:inset 0 0 0 1px #000}
+.recent-context{display:block;font-size:.74rem;font-weight:400;color:var(--cool-gray);margin-top:1px}
+.recent-note{font-size:.8rem;color:var(--cool-gray);margin:8px 0 0}
+.choice-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:7px}
+.choice-btn,.filter-btn,.verb-btn{border:1px solid #C5C5C5;background:#fff;border-radius:999px;padding:8px 11px;font-size:.86rem;font-weight:700;cursor:pointer}
+.choice-btn[aria-pressed="true"],.filter-btn[aria-pressed="true"],.verb-btn[aria-pressed="true"]{background:var(--soft);border-color:#555;box-shadow:inset 0 0 0 1px #555}
+.actions{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-top:16px}
+.btn{border:1.5px solid #111;border-radius:9px;padding:10px 14px;background:#fff;font-weight:700;cursor:pointer}
+.btn.primary{background:#000;color:#fff;border-color:#000}
+.btn.soft{background:var(--soft);border-color:#BEBEBE}
+.btn.small{padding:7px 10px;font-size:.86rem}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.status{min-height:1.25em;margin-top:10px;font-size:.88rem;font-weight:700}
+.skill-handoff{margin:0 0 16px;padding:13px 15px;background:var(--soft-gold);border-radius:12px}
+.skill-handoff strong{display:block;margin-bottom:4px}
+.skill-handoff p{font-size:.88rem;margin:0;color:#343536}
+.helper-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 16px}
+.helper-btn{border:1.5px solid #C9C9C9;background:#fff;border-radius:11px;padding:10px;text-align:left;cursor:pointer;font-weight:700;min-height:60px;line-height:1.25}
+.helper-btn small{display:block;color:var(--cool-gray);font-weight:400;margin-top:2px;font-size:.75rem}
+.helper-btn[aria-pressed="true"]{background:var(--soft);border-color:#555;box-shadow:inset 0 0 0 1px #555}
+.verb-area{padding:14px;background:#FAFAFA;border:1px solid #E3E3E3;border-radius:13px;margin-bottom:16px}
+.verb-area h3{margin-bottom:3px}
+.verb-filter{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 11px}
+.verb-list{display:flex;flex-wrap:wrap;gap:7px}
+.custom-verb{margin-top:11px;max-width:340px}
+.detail-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:15px}
+.detail-card{border:1px solid #D8D8D8;border-radius:12px;padding:12px;background:#fff}
+.detail-card label{display:block;font-size:.92rem;margin-bottom:4px}
+.detail-card .hint{display:block;line-height:1.35;margin-bottom:8px}
+.detail-card input{min-height:42px;font-size:.92rem}
+.preview{margin-top:16px;border-left:5px solid var(--iowa-gold);padding:14px 15px;background:#FAFAFA;border-radius:0 12px 12px 0}
+.preview-label{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#4A4B4D;margin-bottom:5px}
+.preview-text{font-size:1.02rem;font-weight:500;overflow-wrap:anywhere}
+.preview-empty{color:var(--cool-gray);font-weight:400}
+.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:15px 0}
+.review-card{border:1px solid #D9D9D9;border-radius:12px;padding:13px;background:#fff}
+.review-card strong{display:block;margin-bottom:3px}
+.review-card p{font-size:.87rem;color:#424345;margin:0}
+.review-card.good{background:#FAFAFA}
+.tip-box{margin:14px 0;padding:13px 15px;background:var(--soft);border-radius:12px;font-size:.9rem}
+.final-box label{display:block;margin-bottom:6px}
+.final-box textarea{min-height:105px;font-size:1rem}
+.saved-wrap{margin-top:18px;padding-top:17px;border-top:1px solid #E6E6E6}
+.saved-wrap h3{font-size:1.02rem;margin-bottom:3px}
+.saved-list{display:grid;gap:9px;margin-top:10px}
+.saved-card{border:1px solid #D8D8D8;border-radius:12px;padding:12px;background:#FAFAFA}
+.saved-bullet{font-size:.92rem;overflow-wrap:anywhere}
+.saved-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+.empty{padding:18px;text-align:center;border:1.5px dashed #BFC0C1;border-radius:12px;background:#FAFAFA;color:var(--cool-gray);font-size:.9rem}
+.resource-link{margin-top:16px;font-size:.86rem}
+.disclaimer{font-size:.82rem;color:var(--cool-gray);margin-top:12px}
+[hidden]{display:none!important}
+@media(max-width:760px){
+  .shell{padding:12px 10px 48px}.intro,.panel{padding:20px 17px;border-radius:16px}.form-grid,.detail-grid,.review-grid{grid-template-columns:1fr}.helper-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:440px){.helper-grid{grid-template-columns:1fr}.actions .btn{width:100%}.recent-btn{width:100%}.choice-btn{flex:1}.saved-actions .btn{width:auto;flex:1}}
+@media print{
+  body{background:#fff;font-size:11pt}.shell{max-width:none;padding:0}.intro,.panel{box-shadow:none;border:0;padding:0;margin:0}.intro,.panel:not(#reviewPanel){display:none!important}#reviewPanel{display:block!important}#reviewPanel .step-label,#reviewPanel .section-copy,#reviewPanel .review-grid,#reviewPanel .tip-box,#reviewPanel .actions,#reviewPanel .status,#reviewPanel .resource-link,#reviewPanel .disclaimer,#reviewPanel .saved-actions{display:none!important}.final-box textarea{border:0;padding:0;min-height:0;height:auto;resize:none}.saved-card{break-inside:avoid;background:#fff}h2{font-size:20pt}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#activity">Skip to activity</a>
+<main class="shell" id="activity">
+  <section class="intro" aria-labelledby="page-title">
+    <div class="gold-mark" aria-hidden="true"></div>
+    <h1 id="page-title">Build a Strong Resume Bullet</h1>
+    <p class="lede">Start with one thing you actually did. Add the details that show how, why, for whom, or at what scale—and turn it into a concise resume bullet.</p>
+    <p class="meta">You do not need a dramatic accomplishment or a perfect number. Specific, accurate details are more useful than inflated language.</p>
+    <div class="notice"><strong>Use the formula as a guide, not a requirement.</strong> A strong starting point is: action verb + what you did + useful detail about how, why, scope, or result.</div>
+  </section>
+
+  <section class="panel" id="choosePanel" aria-labelledby="choose-title">
+    <div class="step-label"><span class="step-number">1</span> Choose</div>
+    <h2 id="choose-title">Which experience is this bullet about?</h2>
+    <p class="section-copy">Use a recent experience if one is available, or enter something different. This tool works on its own.</p>
+
+    <div class="recent-wrap" id="recentWrap" hidden>
+      <div class="recent-label">Use a recent experience</div>
+      <div class="recent-list" id="recentList" aria-label="Recent experiences"></div>
+      <p class="recent-note">Recent work appears only when it is available on this device. You can always enter something different.</p>
+    </div>
+
+    <div class="form-grid">
+      <div class="field">
+        <label for="experienceName">Experience, role, project, or responsibility</label>
+        <input id="experienceName" type="text" autocomplete="off" placeholder="e.g., Resident Assistant">
+      </div>
+      <div class="field">
+        <label for="experienceContext">Organization, course, or setting <span class="hint">(optional)</span></label>
+        <input id="experienceContext" type="text" autocomplete="off" placeholder="e.g., Burge Residence Hall">
+      </div>
+    </div>
+
+    <div class="field" style="margin-top:14px">
+      <label>Is this experience current or completed?</label>
+      <div class="choice-row" role="group" aria-label="Experience timing">
+        <button class="choice-btn" id="currentBtn" type="button" aria-pressed="false">Current</button>
+        <button class="choice-btn" id="pastBtn" type="button" aria-pressed="true">Completed / past</button>
+      </div>
+      <p class="example">This only changes the verb tense suggestions. Past experiences generally use past-tense verbs; current experiences may use present tense.</p>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" id="continueBtn" type="button">Continue to My Bullet</button>
+    </div>
+    <div class="status" id="chooseStatus" role="status" aria-live="polite"></div>
+  </section>
+
+  <section class="panel" id="buildPanel" aria-labelledby="build-title" hidden>
+    <div class="step-label"><span class="step-number">2</span> Build</div>
+    <h2 id="build-title">What did you do?</h2>
+    <p class="section-copy">Focus on one responsibility, contribution, or accomplishment. You can build another bullet for the same experience afterward.</p>
+
+    <div class="skill-handoff" id="skillHandoff" hidden>
+      <strong>Recent skills from this experience</strong>
+      <p id="skillHandoffText"></p>
+    </div>
+
+    <h3>Need help finding a starting verb?</h3>
+    <p class="example" style="margin-bottom:10px">Choose the kind of contribution you are describing. This only narrows the verb ideas.</p>
+    <div class="helper-grid" id="helperGrid"></div>
+
+    <div class="verb-area">
+      <h3>Choose a power verb</h3>
+      <p class="example">Pick the verb that most accurately describes what you did—not the one that sounds most impressive.</p>
+      <div class="verb-filter" id="verbFilter" aria-label="Power verb categories"></div>
+      <div class="verb-list" id="verbList" aria-label="Power verbs"></div>
+      <div class="field custom-verb">
+        <label for="customVerb">Or enter your own verb <span class="hint">(optional)</span></label>
+        <input id="customVerb" type="text" autocomplete="off" placeholder="e.g., Reconciled">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="whatDid">What did you do?</label>
+      <input id="whatDid" type="text" autocomplete="off" placeholder="e.g., weekly community-building programs">
+      <p class="example">Write the phrase that should come after your verb. You do not need to repeat the verb here.</p>
+    </div>
+
+    <div class="detail-grid" aria-label="Optional bullet details">
+      <div class="detail-card">
+        <label for="scopeDetail">Who, how much, or how often? <span class="hint">(optional)</span></label>
+        <span class="hint">Add scale or frequency when it gives useful context.</span>
+        <input id="scopeDetail" type="text" autocomplete="off" placeholder="e.g., for 40 residents each month">
+      </div>
+      <div class="detail-card">
+        <label for="howDetail">How or with what? <span class="hint">(optional)</span></label>
+        <span class="hint">Name a method, tool, skill, or approach if it matters.</span>
+        <input id="howDetail" type="text" autocomplete="off" placeholder="e.g., using resident feedback and campus resources">
+      </div>
+      <div class="detail-card">
+        <label for="resultDetail">Why or what happened? <span class="hint">(optional)</span></label>
+        <span class="hint">Add the purpose, result, or outcome when you can support it.</span>
+        <input id="resultDetail" type="text" autocomplete="off" placeholder="e.g., to strengthen community and connect students to support">
+      </div>
+    </div>
+
+    <div class="preview" aria-live="polite">
+      <div class="preview-label">Live draft</div>
+      <div class="preview-text" id="previewText"><span class="preview-empty">Choose a verb and describe what you did to start your bullet.</span></div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" id="reviewBtn" type="button" disabled>Review My Bullet</button>
+      <button class="btn" id="backBtn" type="button">Change Experience</button>
+    </div>
+    <div class="status" id="buildStatus" role="status" aria-live="polite"></div>
+  </section>
+
+  <section class="panel" id="reviewPanel" aria-labelledby="review-title" hidden>
+    <div class="step-label"><span class="step-number">3</span> Review</div>
+    <h2 id="review-title">Make it specific and accurate</h2>
+    <p class="section-copy">A good resume bullet is descriptive but brief. You do not need every possible detail—keep the ones that help a reader understand your contribution.</p>
+
+    <div class="review-grid" id="reviewGrid"></div>
+
+    <div class="tip-box" id="quantTip"></div>
+
+    <div class="final-box">
+      <label for="finalBullet">Your bullet <span class="hint">— edit anything that sounds awkward or inaccurate</span></label>
+      <textarea id="finalBullet"></textarea>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" id="keepBtn" type="button">Keep This Bullet</button>
+      <button class="btn" id="copyBtn" type="button">Copy Bullet</button>
+      <button class="btn" id="printBtn" type="button">Print / Save</button>
+      <button class="btn soft" id="anotherBtn" type="button">Build Another for This Experience</button>
+    </div>
+    <div class="status" id="resultStatus" role="status" aria-live="polite"></div>
+
+    <div class="saved-wrap" id="savedWrap">
+      <h3>Bullets you’ve kept for this experience</h3>
+      <p class="example">Recent work may be available to other My Career Path tools on this device. Keep your own copy too.</p>
+      <div class="saved-list" id="savedList"></div>
+    </div>
+
+    <p class="resource-link"><a href="https://careers.uiowa.edu/resumes" target="_blank" rel="noopener">See Pomerantz Career Center resume guidance, examples, and power verbs</a></p>
+    <p class="disclaimer">Only include responsibilities, skills, numbers, and results that accurately reflect your experience.</p>
+  </section>
+</main>
+
+<script>
+(()=>{
+  'use strict';
+
+  const EXPERIENCE_BANK_KEY='uiowaCareerExperienceBank_v1';
+  const SKILLS_BANK_KEY='uiowaCareerSkillsBank_v1';
+  const BULLET_BANK_KEY='uiowaCareerBulletBank_v1';
+
+  const verbGroups={
+    lead:{label:'Lead & organize', short:'Led or organized', hint:'projects, events, people, logistics', verbs:[['Coordinate','Coordinated'],['Lead','Led'],['Organize','Organized'],['Plan','Planned'],['Manage','Managed'],['Facilitate','Facilitated'],['Supervise','Supervised'],['Direct','Directed']]},
+    communicate:{label:'Communicate & teach', short:'Communicated or taught', hint:'customers, groups, writing, explanations', verbs:[['Communicate','Communicated'],['Present','Presented'],['Explain','Explained'],['Write','Wrote'],['Teach','Taught'],['Advise','Advised'],['Inform','Informed'],['Facilitate','Facilitated']]},
+    support:{label:'Support & serve', short:'Supported or served', hint:'customers, students, clients, teammates', verbs:[['Assist','Assisted'],['Support','Supported'],['Serve','Served'],['Mentor','Mentored'],['Guide','Guided'],['Coach','Coached'],['Resolve','Resolved'],['Respond','Responded']]},
+    create:{label:'Create & improve', short:'Created or improved', hint:'programs, materials, processes, products', verbs:[['Develop','Developed'],['Create','Created'],['Design','Designed'],['Implement','Implemented'],['Improve','Improved'],['Streamline','Streamlined'],['Launch','Launched'],['Revise','Revised']]},
+    analyze:{label:'Research & analyze', short:'Researched or analyzed', hint:'data, evidence, options, trends', verbs:[['Analyze','Analyzed'],['Research','Researched'],['Evaluate','Evaluated'],['Assess','Assessed'],['Investigate','Investigated'],['Interpret','Interpreted'],['Compare','Compared'],['Identify','Identified']]},
+    solve:{label:'Solve & achieve', short:'Solved or achieved', hint:'problems, goals, improvements, outcomes', verbs:[['Resolve','Resolved'],['Improve','Improved'],['Increase','Increased'],['Reduce','Reduced'],['Complete','Completed'],['Achieve','Achieved'],['Generate','Generated'],['Secure','Secured']]},
+    technical:{label:'Technology & process', short:'Used tools or systems', hint:'software, equipment, records, workflows', verbs:[['Track','Tracked'],['Document','Documented'],['Maintain','Maintained'],['Configure','Configured'],['Program','Programmed'],['Operate','Operated'],['Process','Processed'],['Monitor','Monitored']]},
+    collaborate:{label:'Collaborate & coordinate', short:'Worked with others', hint:'teams, partners, stakeholders, schedules', verbs:[['Collaborate','Collaborated'],['Coordinate','Coordinated'],['Partner','Partnered'],['Contribute','Contributed'],['Consult','Consulted'],['Negotiate','Negotiated'],['Connect','Connected'],['Engage','Engaged']]}
+  };
+
+  const helperOrder=['lead','communicate','support','create','analyze','solve','technical','collaborate'];
+
+  let timing='past';
+  let activeGroup='lead';
+  let selectedVerb='';
+  let recentExperiences=[];
+  let skillsBank=[];
+  let selectedRecentId=null;
+
+  const choosePanel=document.getElementById('choosePanel');
+  const buildPanel=document.getElementById('buildPanel');
+  const reviewPanel=document.getElementById('reviewPanel');
+  const recentWrap=document.getElementById('recentWrap');
+  const recentList=document.getElementById('recentList');
+  const experienceName=document.getElementById('experienceName');
+  const experienceContext=document.getElementById('experienceContext');
+  const currentBtn=document.getElementById('currentBtn');
+  const pastBtn=document.getElementById('pastBtn');
+  const continueBtn=document.getElementById('continueBtn');
+  const chooseStatus=document.getElementById('chooseStatus');
+  const skillHandoff=document.getElementById('skillHandoff');
+  const skillHandoffText=document.getElementById('skillHandoffText');
+  const helperGrid=document.getElementById('helperGrid');
+  const verbFilter=document.getElementById('verbFilter');
+  const verbList=document.getElementById('verbList');
+  const customVerb=document.getElementById('customVerb');
+  const whatDid=document.getElementById('whatDid');
+  const scopeDetail=document.getElementById('scopeDetail');
+  const howDetail=document.getElementById('howDetail');
+  const resultDetail=document.getElementById('resultDetail');
+  const previewText=document.getElementById('previewText');
+  const reviewBtn=document.getElementById('reviewBtn');
+  const backBtn=document.getElementById('backBtn');
+  const buildStatus=document.getElementById('buildStatus');
+  const reviewGrid=document.getElementById('reviewGrid');
+  const quantTip=document.getElementById('quantTip');
+  const finalBullet=document.getElementById('finalBullet');
+  const keepBtn=document.getElementById('keepBtn');
+  const copyBtn=document.getElementById('copyBtn');
+  const printBtn=document.getElementById('printBtn');
+  const anotherBtn=document.getElementById('anotherBtn');
+  const resultStatus=document.getElementById('resultStatus');
+  const savedList=document.getElementById('savedList');
+
+  function escapeHtml(value){return String(value??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+  function normalize(value){return String(value||'').trim().toLowerCase();}
+  function trimPiece(value){return String(value||'').trim().replace(/[.;,]+$/,'');}
+
+  function safeRead(key){
+    try{const value=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(value)?value:[];}catch(e){return [];}
+  }
+  function safeWrite(key,value){
+    try{localStorage.setItem(key,JSON.stringify(value));return true;}catch(e){return false;}
+  }
+
+  function loadHandoffs(){
+    recentExperiences=safeRead(EXPERIENCE_BANK_KEY).filter(x=>x&&x.experienceName).slice(0,8);
+    skillsBank=safeRead(SKILLS_BANK_KEY).filter(x=>x&&x.experienceName);
+    renderRecent();
+  }
+
+  function renderRecent(){
+    recentList.innerHTML='';
+    recentWrap.hidden=!recentExperiences.length;
+    recentExperiences.forEach((exp,index)=>{
+      const id=exp.id||`${exp.experienceName}-${index}`;
+      const btn=document.createElement('button');
+      btn.type='button';btn.className='recent-btn';btn.setAttribute('aria-pressed',String(selectedRecentId===id));
+      btn.innerHTML=`${escapeHtml(exp.experienceName)}${exp.context?`<span class="recent-context">${escapeHtml(exp.context)}</span>`:''}`;
+      btn.addEventListener('click',()=>{
+        selectedRecentId=id;
+        experienceName.value=exp.experienceName||'';
+        experienceContext.value=exp.context||'';
+        renderRecent();
+        chooseStatus.textContent='';
+      });
+      recentList.appendChild(btn);
+    });
+  }
+
+  function setTiming(value){
+    timing=value;
+    currentBtn.setAttribute('aria-pressed',String(value==='current'));
+    pastBtn.setAttribute('aria-pressed',String(value==='past'));
+    selectedVerb='';customVerb.value='';
+    renderVerbs();updatePreview();
+  }
+
+  currentBtn.addEventListener('click',()=>setTiming('current'));
+  pastBtn.addEventListener('click',()=>setTiming('past'));
+
+  function skillResultFor(name){
+    const target=normalize(name);
+    return skillsBank.find(item=>normalize(item.experienceName)===target)||null;
+  }
+
+  function renderSkillHandoff(){
+    const match=skillResultFor(experienceName.value);
+    if(!match||!Array.isArray(match.competencies)){skillHandoff.hidden=true;skillHandoffText.textContent='';return;}
+    const skills=[];
+    match.competencies.forEach(c=>(c.skills||[]).forEach(s=>{if(!skills.includes(s))skills.push(s);}));
+    const names=skills.length?skills.slice(0,10):match.competencies.map(c=>c.name).slice(0,6);
+    if(!names.length){skillHandoff.hidden=true;return;}
+    skillHandoffText.textContent=`You previously connected this experience with ${names.join(' • ')}. Use these only as reminders while choosing an accurate action verb and details.`;
+    skillHandoff.hidden=false;
+  }
+
+  function renderHelpers(){
+    helperGrid.innerHTML='';
+    helperOrder.forEach(key=>{
+      const group=verbGroups[key];
+      const btn=document.createElement('button');btn.type='button';btn.className='helper-btn';btn.setAttribute('aria-pressed',String(activeGroup===key));
+      btn.innerHTML=`${escapeHtml(group.short)}<small>${escapeHtml(group.hint)}</small>`;
+      btn.addEventListener('click',()=>{activeGroup=key;selectedVerb='';customVerb.value='';renderHelpers();renderFilters();renderVerbs();updatePreview();});
+      helperGrid.appendChild(btn);
+    });
+  }
+
+  function renderFilters(){
+    verbFilter.innerHTML='';
+    helperOrder.forEach(key=>{
+      const group=verbGroups[key];
+      const btn=document.createElement('button');btn.type='button';btn.className='filter-btn';btn.textContent=group.label;btn.setAttribute('aria-pressed',String(activeGroup===key));
+      btn.addEventListener('click',()=>{activeGroup=key;selectedVerb='';customVerb.value='';renderHelpers();renderFilters();renderVerbs();updatePreview();});
+      verbFilter.appendChild(btn);
+    });
+  }
+
+  function renderVerbs(){
+    verbList.innerHTML='';
+    const group=verbGroups[activeGroup];
+    group.verbs.forEach(pair=>{
+      const verb=timing==='current'?pair[0]:pair[1];
+      const btn=document.createElement('button');btn.type='button';btn.className='verb-btn';btn.textContent=verb;btn.setAttribute('aria-pressed',String(selectedVerb===verb&&customVerb.value.trim()===''));
+      btn.addEventListener('click',()=>{selectedVerb=verb;customVerb.value='';renderVerbs();updatePreview();});
+      verbList.appendChild(btn);
+    });
+  }
+
+  function chosenVerb(){return trimPiece(customVerb.value)||selectedVerb;}
+
+  function buildBullet(){
+    const parts=[chosenVerb(),trimPiece(whatDid.value),trimPiece(scopeDetail.value),trimPiece(howDetail.value),trimPiece(resultDetail.value)].filter(Boolean);
+    return parts.join(' ').replace(/\s+/g,' ').trim();
+  }
+
+  function updatePreview(){
+    const bullet=buildBullet();
+    if(!bullet){previewText.innerHTML='<span class="preview-empty">Choose a verb and describe what you did to start your bullet.</span>';}
+    else{previewText.textContent=bullet;}
+    reviewBtn.disabled=!(chosenVerb()&&trimPiece(whatDid.value));
+  }
+
+  customVerb.addEventListener('input',()=>{if(customVerb.value.trim())selectedVerb='';renderVerbs();updatePreview();});
+  [whatDid,scopeDetail,howDetail,resultDetail].forEach(el=>el.addEventListener('input',updatePreview));
+
+  continueBtn.addEventListener('click',()=>{
+    chooseStatus.textContent='';
+    if(!experienceName.value.trim()){
+      chooseStatus.textContent='Add the experience this bullet is about.';
+      experienceName.focus();return;
+    }
+    renderSkillHandoff();renderHelpers();renderFilters();renderVerbs();updatePreview();
+    buildPanel.hidden=false;reviewPanel.hidden=true;
+    buildPanel.scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(()=>whatDid.focus(),350);
+  });
+
+  backBtn.addEventListener('click',()=>{
+    buildPanel.hidden=true;reviewPanel.hidden=true;chooseStatus.textContent='';
+    choosePanel.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+
+  function renderReview(){
+    const cards=[];
+    cards.push({title:'Starts with an action verb',body:`Your draft begins with “${chosenVerb()}.”`,good:true});
+    cards.push({title:'Says what you did',body:trimPiece(whatDid.value),good:true});
+    const details=[trimPiece(scopeDetail.value),trimPiece(howDetail.value),trimPiece(resultDetail.value)].filter(Boolean);
+    if(details.length){cards.push({title:'Adds useful context',body:'You included detail about scope, method, purpose, or result.',good:true});}
+    else{cards.push({title:'Consider one more detail',body:'Who, how, how often, why, or what happened could make this more specific—if the detail is meaningful and true.',good:false});}
+    if(trimPiece(resultDetail.value)){cards.push({title:'Shows purpose or result',body:trimPiece(resultDetail.value),good:true});}
+    else{cards.push({title:'Result is optional',body:'Add an outcome or purpose when you can support it. Do not invent a result just to complete the formula.',good:false});}
+    reviewGrid.innerHTML='';
+    cards.forEach(c=>{
+      const div=document.createElement('div');div.className=`review-card${c.good?' good':''}`;
+      div.innerHTML=`<strong>${escapeHtml(c.title)}</strong><p>${escapeHtml(c.body)}</p>`;reviewGrid.appendChild(div);
+    });
+    const hasNumber=/\d/.test([scopeDetail.value,howDetail.value,resultDetail.value,whatDid.value].join(' '));
+    quantTip.innerHTML=hasNumber
+      ? '<strong>Useful context:</strong> You included a number. Keep it only if it is accurate and helps a reader understand your scope, frequency, or result.'
+      : '<strong>Could a number help?</strong> Consider frequency, people served, items handled, dollars, time, percentage, or project size. Quantify when it adds real context—not because every bullet needs a number.';
+  }
+
+  reviewBtn.addEventListener('click',()=>{
+    buildStatus.textContent='';
+    if(!chosenVerb()||!trimPiece(whatDid.value)){buildStatus.textContent='Choose a verb and describe what you did first.';return;}
+    finalBullet.value=buildBullet();renderReview();renderSaved();reviewPanel.hidden=false;
+    reviewPanel.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+
+  function savedForExperience(){
+    const name=normalize(experienceName.value);
+    return safeRead(BULLET_BANK_KEY).filter(item=>item&&normalize(item.experienceName)===name);
+  }
+
+  function renderSaved(){
+    const saved=savedForExperience();savedList.innerHTML='';
+    if(!saved.length){savedList.innerHTML='<div class="empty">No bullets kept yet. When you keep one, it will appear here if browser storage is available.</div>';return;}
+    saved.forEach(item=>{
+      const card=document.createElement('div');card.className='saved-card';
+      const text=document.createElement('div');text.className='saved-bullet';text.textContent=`• ${item.bullet}`;
+      const actions=document.createElement('div');actions.className='saved-actions';
+      const copy=document.createElement('button');copy.type='button';copy.className='btn small';copy.textContent='Copy';
+      copy.addEventListener('click',()=>copyText(item.bullet,'Copied saved bullet.'));
+      const remove=document.createElement('button');remove.type='button';remove.className='btn small';remove.textContent='Remove';
+      remove.addEventListener('click',()=>removeSaved(item.id));
+      actions.append(copy,remove);card.append(text,actions);savedList.appendChild(card);
+    });
+  }
+
+  function keepBullet(){
+    resultStatus.textContent='';
+    const bullet=trimPiece(finalBullet.value);
+    if(!bullet){resultStatus.textContent='Add your final bullet first.';finalBullet.focus();return;}
+    let bank=safeRead(BULLET_BANK_KEY);
+    const duplicate=bank.some(item=>item&&normalize(item.experienceName)===normalize(experienceName.value)&&normalize(item.bullet)===normalize(bullet));
+    if(!duplicate){
+      bank.unshift({
+        id:`bullet-${Date.now()}-${Math.random().toString(36).slice(2,8)}`,
+        experienceName:experienceName.value.trim(),
+        context:experienceContext.value.trim(),
+        bullet,
+        updatedAt:new Date().toISOString()
+      });
+      bank=bank.slice(0,60);
+    }
+    const stored=safeWrite(BULLET_BANK_KEY,bank);
+    resultStatus.textContent=stored?(duplicate?'This bullet is already in your recent work.':'Kept this bullet on this device.'):'Your browser blocked local saving. Copy or Print / Save the bullet instead.';
+    renderSaved();
+  }
+
+  function removeSaved(id){
+    let bank=safeRead(BULLET_BANK_KEY).filter(item=>item&&item.id!==id);
+    safeWrite(BULLET_BANK_KEY,bank);renderSaved();resultStatus.textContent='Removed from recent work.';
+  }
+
+  async function copyText(text,message){
+    try{await navigator.clipboard.writeText(text);resultStatus.textContent=message;}
+    catch(e){
+      const ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+      try{document.execCommand('copy');resultStatus.textContent=message;}catch(err){resultStatus.textContent='Copy was blocked by your browser. Select the bullet and copy it manually.';}ta.remove();
+    }
+  }
+
+  keepBtn.addEventListener('click',keepBullet);
+  copyBtn.addEventListener('click',()=>copyText(trimPiece(finalBullet.value),'Copied your bullet.'));
+  printBtn.addEventListener('click',()=>window.print());
+
+  function clearBulletFields(){
+    selectedVerb='';customVerb.value='';whatDid.value='';scopeDetail.value='';howDetail.value='';resultDetail.value='';finalBullet.value='';reviewPanel.hidden=true;resultStatus.textContent='';buildStatus.textContent='';
+    renderVerbs();updatePreview();buildPanel.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>whatDid.focus(),350);
+  }
+  anotherBtn.addEventListener('click',clearBulletFields);
+
+  experienceName.addEventListener('input',()=>{
+    const selected=recentExperiences.find((exp,index)=>(exp.id||`${exp.experienceName}-${index}`)===selectedRecentId);
+    if(!selected||normalize(experienceName.value)!==normalize(selected.experienceName)){selectedRecentId=null;renderRecent();}
+  });
+
+  loadHandoffs();setTiming('past');renderHelpers();renderFilters();renderVerbs();updatePreview();
+})();
+</script>
+</body>
+</html>
