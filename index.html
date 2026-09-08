@@ -9,131 +9,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --iowa-black:#000;
-  --iowa-gold:#FFCD00;
-  --cool-gray:#63666A;
-  --paper:#fff;
-  --canvas:#F7F7F7;
-  --soft:#F1F1F1;
-  --soft-gold:#FFF8D6;
-  --border:#D6D6D6;
-  --link:#00558C;
-  --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 22px rgba(0,0,0,.045);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:#fff;color:#000;font:16px/1.5 "Roboto",Arial,Helvetica,sans-serif}
-button,input,textarea{font:inherit}
-button{color:inherit}
-a{color:var(--link)}
-:focus-visible{outline:3px solid var(--iowa-gold);outline-offset:3px}
-.skip-link{position:absolute;left:-9999px;top:8px;z-index:1000;background:#fff;color:#000;border:2px solid #000;padding:9px 12px;border-radius:6px}
-.skip-link:focus{left:8px}
-.shell{max-width:920px;margin:0 auto;padding:22px 18px 10px}
-.intro,.panel{background:var(--paper);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow)}
-.intro{padding:28px 28px 24px}
-.panel{padding:24px;margin-top:16px}
-.gold-mark{width:42px;height:7px;background:var(--iowa-gold);border-radius:999px;margin-bottom:14px}
-h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700;color:#000}
-h1{font-size:clamp(2.15rem,5vw,3.25rem);line-height:1;margin:0 0 10px;letter-spacing:-.025em}
-h2{font-size:1.62rem;line-height:1.12;margin:0 0 8px}
-h3{font-size:1rem;line-height:1.3;margin:0 0 5px}
-p{margin:0 0 12px}
-.lede{font-size:1.08rem;max-width:770px;margin-bottom:12px}
-.meta{font-size:.9rem;color:var(--cool-gray);margin:0}
-.section-copy{color:#2F3032;max-width:780px;margin-bottom:16px}
-.step-label{display:flex;align-items:center;gap:9px;margin-bottom:8px;font-size:.78rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
-.step-number{width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--iowa-gold);font-weight:700}
-.field{display:flex;flex-direction:column;gap:6px}
-label{font-weight:700}
-.hint{font-size:.84rem;color:var(--cool-gray);font-weight:400}
-input[type="text"],textarea{width:100%;border:1.5px solid #B8B8B8;border-radius:10px;padding:11px 12px;background:#fff;color:#000}
-input[type="text"]{min-height:46px}
-textarea{min-height:88px;resize:vertical}
-.example{font-size:.84rem;color:var(--cool-gray);margin:7px 0 0}
-.form-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:12px}
-.recent-wrap{margin:0 0 16px;padding:14px;background:var(--soft);border-radius:12px}
-.recent-label{font-size:.84rem;font-weight:700;margin-bottom:8px}
-.recent-list{display:flex;flex-wrap:wrap;gap:8px}
-.recent-btn{border:1px solid #BFC0C1;background:#fff;border-radius:999px;padding:8px 11px;font-size:.86rem;font-weight:700;cursor:pointer;text-align:left}
-.recent-btn:hover{border-color:#666}
-.recent-btn[aria-pressed="true"]{background:#fff;border-color:#000;box-shadow:inset 0 0 0 1px #000}
-.recent-context{display:block;font-size:.74rem;font-weight:400;color:var(--cool-gray);margin-top:1px}
-.recent-note{font-size:.8rem;color:var(--cool-gray);margin:8px 0 0}
-.choice-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:7px}
-.choice-btn,.filter-btn,.verb-btn{border:1px solid #C5C5C5;background:#fff;border-radius:999px;padding:8px 11px;font-size:.86rem;font-weight:700;cursor:pointer}
-.choice-btn[aria-pressed="true"],.filter-btn[aria-pressed="true"],.verb-btn[aria-pressed="true"]{background:var(--soft);border-color:#555;box-shadow:inset 0 0 0 1px #555}
-.actions{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-top:16px}
-.btn{border:1.5px solid #111;border-radius:9px;padding:10px 14px;background:#fff;font-weight:700;cursor:pointer}
-.btn.primary{background:#000;color:#fff;border-color:#000}
-.btn.soft{background:var(--soft);border-color:#BEBEBE}
-.btn.small{padding:7px 10px;font-size:.86rem}
-.btn:disabled{opacity:.45;cursor:not-allowed}
-.status{min-height:1.25em;margin-top:10px;font-size:.88rem;font-weight:700}
-.skill-handoff{margin:0 0 16px;padding:13px 15px;background:var(--soft-gold);border-radius:12px}
-.skill-handoff strong{display:block;margin-bottom:4px}
-.skill-handoff p{font-size:.88rem;margin:0;color:#343536}
-.helper-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 16px}
-.helper-btn{border:1.5px solid #C9C9C9;background:#fff;border-radius:11px;padding:10px;text-align:left;cursor:pointer;font-weight:700;min-height:60px;line-height:1.25}
-.helper-btn small{display:block;color:var(--cool-gray);font-weight:400;margin-top:2px;font-size:.75rem}
-.helper-btn[aria-pressed="true"]{background:var(--soft);border-color:#555;box-shadow:inset 0 0 0 1px #555}
-.verb-area{padding:14px;background:#FAFAFA;border:1px solid #E3E3E3;border-radius:13px;margin-bottom:16px}
-.verb-area h3{margin-bottom:3px}
-.verb-filter{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 11px}
-.verb-list{display:flex;flex-wrap:wrap;gap:7px}
-.custom-verb{margin-top:11px;max-width:340px}
-.bullet-nudge{font-size:.88rem;color:#454648;margin:0 0 14px}
-.formula-strip{margin:14px 0 0;padding:9px 11px;background:var(--soft);border-radius:10px;font-size:.86rem;color:#343536}
-.formula-strip strong{color:#000}
-.what-did-step{margin-top:16px}
-.verb-input-shell{display:flex;align-items:stretch;border:1.5px solid #B8B8B8;border-radius:10px;background:#fff;overflow:hidden}
-.verb-input-shell:focus-within{outline:3px solid var(--iowa-gold);outline-offset:3px}
-.verb-prefix{display:flex;align-items:center;padding:0 0 0 12px;font-weight:700;white-space:nowrap}
-.verb-prefix[hidden]{display:none!important}
-.verb-input-shell input[type="text"]{border:0;border-radius:0;outline:0;box-shadow:none;padding-left:6px}
-.verb-input-shell.locked{background:#F4F4F4;border-style:dashed}
-.verb-input-shell.locked input[type="text"]{background:#F4F4F4;color:#777;cursor:not-allowed}
-.detail-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:15px}
-.detail-card{border:1px solid #D8D8D8;border-radius:12px;padding:12px;background:#fff}
-.detail-card label{display:block;font-size:.92rem;margin-bottom:4px}
-.detail-card .hint{display:block;line-height:1.35;margin-bottom:8px}
-.detail-card input{min-height:42px;font-size:.92rem}
-.preview{margin-top:16px;border-left:5px solid var(--iowa-gold);padding:14px 15px;background:#FAFAFA;border-radius:0 12px 12px 0}
-.preview-label{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#4A4B4D;margin-bottom:5px}
-.preview-text{font-size:1.02rem;font-weight:500;overflow-wrap:anywhere}
-.preview-empty{color:var(--cool-gray);font-weight:400}
-.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:15px 0}
-.review-card{border:1px solid #D9D9D9;border-radius:12px;padding:13px;background:#fff;position:relative}
-.review-card strong{display:block;margin-bottom:3px}
-.review-card p{font-size:.87rem;color:#424345;margin:0}
-.review-card.good{background:#FAFAFA}
-.review-card.attention{border-color:#D6B100;background:#FFF9E6;box-shadow:inset 4px 0 0 var(--iowa-gold)}
-.review-status{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;font-weight:700;letter-spacing:.02em;margin-bottom:7px;color:#555}
-.review-status .marker{font-size:.86rem;line-height:1}
-.review-card.attention .review-status{color:#5A4A00}
-.review-card.attention .review-status .marker{color:#8A6D00}
-.review-card.good .review-status .marker{color:#777}
-.tip-box{margin:14px 0;padding:13px 15px;background:var(--soft);border-radius:12px;font-size:.9rem}
-.final-box label{display:block;margin-bottom:6px}
-.final-box textarea{min-height:105px;font-size:1rem}
-.saved-wrap{margin-top:18px;padding-top:17px;border-top:1px solid #E6E6E6}
-.saved-wrap h3{font-size:1.02rem;margin-bottom:3px}
-.saved-list{display:grid;gap:9px;margin-top:10px}.saved-wrap .tip-box{margin-top:14px;margin-bottom:8px}
-.saved-card{border:1px solid #D8D8D8;border-radius:12px;padding:12px;background:#FAFAFA}
-.saved-bullet{font-size:.92rem;overflow-wrap:anywhere}
-.saved-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
-.empty{padding:18px;text-align:center;border:1.5px dashed #BFC0C1;border-radius:12px;background:#FAFAFA;color:var(--cool-gray);font-size:.9rem}
-.resource-link{margin-top:16px;font-size:.86rem}
-.disclaimer{font-size:.82rem;color:var(--cool-gray);margin-top:12px}
-[hidden]{display:none!important}
-@media(max-width:760px){
-  .shell{padding:12px 10px 8px}.intro,.panel{padding:20px 17px;border-radius:16px}.form-grid,.detail-grid,.review-grid{grid-template-columns:1fr}.helper-grid{grid-template-columns:1fr 1fr}
-}
-@media(max-width:440px){.helper-grid{grid-template-columns:1fr}.actions .btn{width:100%}.recent-btn{width:100%}.choice-btn{flex:1}.saved-actions .btn{width:auto;flex:1}}
-@media print{
-  body{background:#fff;font-size:11pt}.shell{max-width:none;padding:0}.intro,.panel{box-shadow:none;border:0;padding:0;margin:0}.intro,.panel:not(#reviewPanel){display:none!important}#reviewPanel{display:block!important}#reviewPanel .step-label,#reviewPanel .section-copy,#reviewPanel .review-grid,#reviewPanel .tip-box,#reviewPanel .actions,#reviewPanel .status,#reviewPanel .resource-link,#reviewPanel .disclaimer,#reviewPanel .saved-actions{display:none!important}.final-box textarea{border:0;padding:0;min-height:0;height:auto;resize:none}.saved-card{break-inside:avoid;background:#fff}h2{font-size:20pt}
-}
+:root{--gold:#FFCD00;--gray:#63666A;--soft:#F1F1F1;--soft-gold:#FFF8D6;--border:#D6D6D6;--link:#00558C;--shadow:0 1px 2px rgba(0,0,0,.04),0 8px 22px rgba(0,0,0,.045)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:#000;font:16px/1.5 "Roboto",Arial,Helvetica,sans-serif}button,input,textarea{font:inherit}a{color:var(--link)}:focus-visible{outline:3px solid var(--gold);outline-offset:3px}[hidden]{display:none!important}
+.skip-link{position:absolute;left:-9999px;top:8px;z-index:1000;background:#fff;color:#000;border:2px solid #000;padding:9px 12px;border-radius:6px}.skip-link:focus{left:8px}
+.shell{max-width:920px;margin:0 auto;padding:22px 18px 10px}.intro,.panel{background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow)}.intro{padding:28px 28px 24px}.panel{padding:24px;margin-top:16px}.gold-mark{width:42px;height:7px;background:var(--gold);border-radius:999px;margin-bottom:14px}
+h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{font-size:clamp(2.15rem,5vw,3.25rem);line-height:1;margin:0 0 10px;letter-spacing:-.025em}h2{font-size:1.62rem;line-height:1.12;margin:0 0 8px}h3{font-size:1rem;line-height:1.3;margin:0 0 5px}p{margin:0 0 12px}.lede{font-size:1.08rem;max-width:770px;margin-bottom:0}.section-copy{color:#2F3032;max-width:780px;margin-bottom:16px}.hint{font-size:.84rem;color:var(--gray);font-weight:400}.example{font-size:.84rem;color:var(--gray);margin:7px 0 0}
+.stepper{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:16px}.step-chip{border:1px solid #D8D8D8;background:#fff;border-radius:9px;padding:7px 8px;font-size:.76rem;font-weight:700;text-align:center;color:#555}.step-chip.current{background:#000;color:#fff;border-color:#000}.step-chip.done{background:#F5F5F5;color:#000}.step-chip.done::before{content:"✓ ";font-weight:700}.step-label{display:flex;align-items:center;gap:9px;margin-bottom:8px;font-size:.78rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase}.step-number{width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--gold);font-weight:700}
+.field{display:flex;flex-direction:column;gap:6px}label{font-weight:700}input[type="text"],textarea{width:100%;border:1.5px solid #B8B8B8;border-radius:10px;padding:11px 12px;background:#fff;color:#000}input[type="text"]{min-height:46px}textarea{min-height:88px;resize:vertical}.form-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:12px}
+.recent-wrap{margin:0 0 16px;padding:14px;background:var(--soft);border-radius:12px}.recent-label{font-size:.84rem;font-weight:700;margin-bottom:8px}.recent-list,.verb-list,.detail-options,.actions{display:flex;flex-wrap:wrap;gap:8px}.recent-btn,.verb-btn,.detail-option{border:1px solid #C5C5C5;background:#fff;border-radius:999px;padding:8px 11px;font-size:.86rem;font-weight:700;cursor:pointer}.recent-btn[aria-pressed="true"],.verb-btn[aria-pressed="true"],.detail-option[aria-pressed="true"]{background:var(--soft);border-color:#555;box-shadow:inset 0 -3px 0 var(--gold)}.recent-context{display:block;font-size:.74rem;font-weight:400;color:var(--gray);margin-top:1px}.recent-note{font-size:.8rem;color:var(--gray);margin:8px 0 0}
+.skill-handoff{margin:0 0 14px;padding:13px 15px;background:var(--soft-gold);border-radius:12px}.skill-handoff strong{display:block;margin-bottom:6px}.verb-area{padding:13px 14px;background:#FAFAFA;border:1px solid #E3E3E3;border-radius:13px;margin-top:14px}.verb-area summary{cursor:pointer}.custom-verb{margin-top:11px;max-width:340px}.resource-link{margin-top:14px;font-size:.86rem}
+.btn{border:1.5px solid #111;border-radius:9px;padding:10px 14px;background:#fff;font-weight:700;cursor:pointer}.btn.primary{background:#000;color:#fff}.btn.soft{background:var(--soft);border-color:#BEBEBE}.btn.small{padding:7px 10px;font-size:.86rem}.btn:disabled{opacity:.45;cursor:not-allowed}.actions{align-items:center;margin-top:18px}.step-actions{justify-content:space-between}.step-actions .right-actions{display:flex;gap:8px;margin-left:auto}.status{min-height:1.25em;margin-top:10px;font-size:.88rem;font-weight:700}
+.bullet-so-far{margin:0 0 16px;border-left:5px solid var(--gold);padding:11px 13px;background:#FAFAFA;border-radius:0 10px 10px 0}.bullet-so-far .label{font-size:.73rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#555;margin-bottom:3px}.bullet-so-far .text{font-weight:500}.preview-empty{color:var(--gray);font-weight:400}
+.verb-input-shell{display:flex;align-items:stretch;border:1.5px solid #B8B8B8;border-radius:10px;background:#fff;overflow:hidden}.verb-prefix{display:flex;align-items:center;padding:0 0 0 12px;font-weight:700;white-space:nowrap}.verb-input-shell input{border:0!important;border-radius:0!important;outline:0!important;padding-left:6px!important}
+.detail-options{margin-top:9px}.detail-editor{margin-top:12px;border:1px solid #D8D8D8;border-radius:12px;padding:12px;background:#fff}.detail-editor label{display:block;font-size:.92rem;margin-bottom:4px}.detail-editor .hint{display:block;line-height:1.35;margin-bottom:8px}.detail-editor input{min-height:42px;font-size:.92rem}
+.review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:15px 0}.review-card{border:1px solid #D9D9D9;border-radius:12px;padding:13px;background:#fff}.review-card.good{background:#FAFAFA}.review-card.attention{border-color:#D6B100;background:#FFF9E6;box-shadow:inset 4px 0 0 var(--gold)}.review-card strong{display:block;margin-bottom:3px}.review-card p{font-size:.87rem;color:#424345;margin:0}.review-status{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;font-weight:700;margin-bottom:7px;color:#555}.review-card.attention .review-status{color:#5A4A00}.formula-strip{margin:14px 0 0;padding:9px 11px;background:var(--soft);border-radius:10px;font-size:.86rem}.tip-box{margin:10px 0 0;padding:12px 14px;background:var(--soft);border-radius:12px;font-size:.9rem}.final-box label{display:block;margin-bottom:6px}.final-box textarea{min-height:105px;font-size:1rem}
+.saved-wrap{margin-top:18px;padding-top:17px;border-top:1px solid #E6E6E6}.saved-wrap h3{font-size:1.02rem;margin-bottom:3px}.saved-list{display:grid;gap:9px;margin-top:10px}.saved-card{border:1px solid #D8D8D8;border-radius:12px;padding:12px;background:#FAFAFA}.saved-bullet{font-size:.92rem;overflow-wrap:anywhere}.saved-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.empty{padding:18px;text-align:center;border:1.5px dashed #BFC0C1;border-radius:12px;background:#FAFAFA;color:var(--gray);font-size:.9rem}.disclaimer{font-size:.82rem;color:var(--gray);margin-top:12px}
+@media(max-width:760px){.shell{padding:12px 10px 8px}.intro,.panel{padding:20px 17px;border-radius:16px}.form-grid,.review-grid{grid-template-columns:1fr}.stepper{display:flex;overflow-x:auto;gap:6px;padding-bottom:2px}.step-chip{min-width:92px;flex:0 0 auto}.step-actions{gap:8px}.step-actions .right-actions{margin-left:0}.step-actions,.step-actions .right-actions{width:100%}.step-actions .btn{flex:1}}
+@media(max-width:440px){.actions .btn{width:100%}.recent-btn{width:100%}.saved-actions .btn{width:auto;flex:1}.step-actions .right-actions{display:flex}.step-actions .right-actions .btn{width:auto}}
+@media print{body{background:#fff;font-size:11pt}.shell{max-width:none;padding:0}.intro,.panel{box-shadow:none;border:0;padding:0;margin:0}.intro,.panel:not(#stepReview){display:none!important}#stepReview{display:block!important}.stepper,.step-label,#stepReview .review-grid,#stepReview .formula-strip,#stepReview .tip-box,#stepReview .actions,#stepReview .status,#stepReview .resource-link,#stepReview .disclaimer,#stepReview .saved-actions{display:none!important}.final-box textarea{border:0;padding:0;min-height:0;height:auto;resize:none}.saved-card{break-inside:avoid;background:#fff}h2{font-size:20pt}}
 </style>
 </head>
 <body>
@@ -143,489 +36,137 @@ textarea{min-height:88px;resize:vertical}
     <div class="gold-mark" aria-hidden="true"></div>
     <h1 id="page-title">Build a Strong Resume Bullet</h1>
     <p class="lede">Build one strong bullet at a time. Repeat for different skills, contributions, or accomplishments.</p>
+    <div class="stepper" aria-label="Bullet builder steps">
+      <div class="step-chip current" data-chip="1">Experience</div>
+      <div class="step-chip" data-chip="2">Power verb</div>
+      <div class="step-chip" data-chip="3">What you did</div>
+      <div class="step-chip" data-chip="4">Add detail</div>
+      <div class="step-chip" data-chip="5">Review</div>
+    </div>
   </section>
 
-  <section class="panel" id="choosePanel" aria-labelledby="choose-title">
-    <div class="step-label"><span class="step-number">1</span> Choose</div>
-    <h2 id="choose-title">Which experience is this bullet about?</h2>
+  <section class="panel step-panel" id="stepExperience" data-step="1" aria-labelledby="experience-title">
+    <div class="step-label"><span class="step-number">1</span> Experience</div>
+    <h2 id="experience-title">Which experience is this bullet about?</h2>
     <p class="section-copy">Choose a recent experience or enter one below.</p>
-
     <div class="recent-wrap" id="recentWrap" hidden>
       <div class="recent-label">Use a recent experience</div>
-      <div class="recent-list" id="recentList" aria-label="Recent experiences"></div>
+      <div class="recent-list" id="recentList"></div>
       <p class="recent-note">Recent work appears only when available on this device.</p>
     </div>
-
     <div class="form-grid">
-      <div class="field">
-        <label for="experienceName">Experience, role, project, or responsibility</label>
-        <input id="experienceName" type="text" autocomplete="off" placeholder="e.g., Resident Assistant">
-      </div>
-      <div class="field">
-        <label for="experienceContext">Organization, course, or setting <span class="hint">(optional)</span></label>
-        <input id="experienceContext" type="text" autocomplete="off" placeholder="e.g., Burge Residence Hall">
-      </div>
+      <div class="field"><label for="experienceName">Experience, role, project, or responsibility</label><input id="experienceName" type="text" autocomplete="off" placeholder="e.g., Resident Assistant"></div>
+      <div class="field"><label for="experienceContext">Organization, course, or setting <span class="hint">(optional)</span></label><input id="experienceContext" type="text" autocomplete="off" placeholder="e.g., Burge Residence Hall"></div>
     </div>
-
-    <div class="status" id="chooseStatus" role="status" aria-live="polite"></div>
+    <div class="actions step-actions"><div></div><div class="right-actions"><button class="btn primary" id="experienceNext" type="button" disabled>Next →</button></div></div>
+    <div class="status" id="experienceStatus" role="status" aria-live="polite"></div>
   </section>
 
-  <section class="panel" id="buildPanel" aria-labelledby="build-title" hidden>
-    <div class="step-label"><span class="step-number">2</span> Build</div>
-    <h2 id="build-title">Build your bullet</h2>
-    <p class="bullet-nudge"><strong>One bullet = one contribution.</strong> Finish this one, then build another for a different skill or accomplishment.</p>
-
-    <h3 id="verbHeading" tabindex="-1">Choose a power verb</h3>
-    <p class="example">Use past tense. Pick the verb that best describes your action. A job description can also give you ideas—use verbs that accurately match what you did.</p>
-
-    <div class="skill-handoff" id="skillHandoff" hidden>
-      <strong>Your suggested power verbs</strong>
-      <div class="verb-list" id="skillHandoffList" aria-label="Suggested power verbs"></div>
-    </div>
-
-    <div class="skill-handoff" id="starterVerbWrap" hidden>
-      <strong>Start with one of these</strong>
-      <div class="verb-list" id="starterVerbList" aria-label="Common power verbs"></div>
-    </div>
-
-    <details class="verb-area" id="moreVerbDetails">
-      <summary><strong>Need another verb?</strong></summary>
-      <div style="margin-top:12px">
-        <div class="verb-list" id="verbList" aria-label="More power verbs"></div>
-        <div class="field custom-verb">
-          <label for="customVerb">Or type your own past-tense verb</label>
-          <input id="customVerb" type="text" autocomplete="off" placeholder="e.g., Reconciled">
-        </div>
-        <p class="resource-link"><a href="https://careers.uiowa.edu/resume-writing-power-verbs" target="_blank" rel="noopener">See the full Power Verb List</a></p>
-      </div>
-    </details>
-
-    <div class="field what-did-step" id="whatDidWrap">
-      <label for="whatDid">What did you do?</label>
-      <div class="verb-input-shell locked" id="verbInputShell">
-        <span class="verb-prefix" id="verbPrefix" hidden></span>
-        <input id="whatDid" type="text" autocomplete="off" placeholder="Choose a power verb above to unlock this step" disabled>
-      </div>
-      <p class="example" id="whatDidHelp">Choose a power verb first. It will appear here automatically, then you can add what you did.</p>
-    </div>
-
-    <div class="formula-strip"><strong>Formula:</strong> Power verb + what you did + useful detail about how, why, scope, or result</div>
-
-    <div class="detail-grid" aria-label="Optional bullet details">
-      <div class="detail-card">
-        <label for="scopeDetail">Who, how much, or how often? <span class="hint">(optional)</span></label>
-        <span class="hint">Add scale or frequency when it gives useful context.</span>
-        <input id="scopeDetail" type="text" autocomplete="off" placeholder="e.g., for 40 residents each month">
-      </div>
-      <div class="detail-card">
-        <label for="howDetail">How or with what? <span class="hint">(optional)</span></label>
-        <span class="hint">Name a method, tool, skill, or approach if it matters.</span>
-        <input id="howDetail" type="text" autocomplete="off" placeholder="e.g., using resident feedback and campus resources">
-      </div>
-      <div class="detail-card">
-        <label for="resultDetail">Why or what happened? <span class="hint">(optional)</span></label>
-        <span class="hint">Add the purpose, result, or outcome when you can support it.</span>
-        <input id="resultDetail" type="text" autocomplete="off" placeholder="e.g., to strengthen community and connect students to support">
-      </div>
-    </div>
-
-    <div class="preview" aria-live="polite">
-      <div class="preview-label">Live draft</div>
-      <div class="preview-text" id="previewText"><span class="preview-empty">Choose a verb and describe what you did to start your bullet.</span></div>
-    </div>
-
-    <div class="actions">
-      <button class="btn primary" id="reviewBtn" type="button" disabled>Review My Bullet</button>
-      <button class="btn" id="backBtn" type="button">Change Experience</button>
-    </div>
-    <div class="status" id="buildStatus" role="status" aria-live="polite"></div>
+  <section class="panel step-panel" id="stepVerb" data-step="2" hidden aria-labelledby="verb-title">
+    <div class="step-label"><span class="step-number">2</span> Power verb</div>
+    <h2 id="verb-title">Choose a power verb</h2>
+    <p class="section-copy">Use past tense. A job description can also give you ideas—only use verbs that accurately describe what you did.</p>
+    <div class="skill-handoff" id="skillHandoff" hidden><strong>Your suggested power verbs</strong><div class="verb-list" id="skillHandoffList"></div></div>
+    <div class="skill-handoff" id="starterVerbWrap" hidden><strong>Start with one of these</strong><div class="verb-list" id="starterVerbList"></div></div>
+    <details class="verb-area" id="moreVerbDetails"><summary><strong>Need another verb?</strong></summary><div style="margin-top:12px"><div class="verb-list" id="verbList"></div><div class="field custom-verb"><label for="customVerb">Or type your own past-tense verb</label><input id="customVerb" type="text" autocomplete="off" placeholder="e.g., Reconciled"></div><p class="resource-link"><a href="https://careers.uiowa.edu/resume-writing-power-verbs" target="_blank" rel="noopener">See the full Power Verb List</a></p></div></details>
+    <div class="actions step-actions"><button class="btn" data-back="1" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="verbNext" type="button" disabled>Next →</button></div></div>
   </section>
 
-  <section class="panel" id="reviewPanel" aria-labelledby="review-title" hidden>
-    <div class="step-label"><span class="step-number">3</span> Review</div>
-    <h2 id="review-title">Make it specific and accurate</h2>
-    <p class="section-copy">Keep only the details that make your contribution clearer.</p>
+  <section class="panel step-panel" id="stepAction" data-step="3" hidden aria-labelledby="action-title">
+    <div class="step-label"><span class="step-number">3</span> What you did</div>
+    <h2 id="action-title">What did you do?</h2>
+    <div class="bullet-so-far"><div class="label">Starting with</div><div class="text" id="actionVerbDisplay"></div></div>
+    <div class="field"><label for="whatDid">Add the action after your power verb</label><div class="verb-input-shell"><span class="verb-prefix" id="verbPrefix"></span><input id="whatDid" type="text" autocomplete="off" placeholder="e.g., weekly community-building programs for residents"></div></div>
+    <div class="actions step-actions"><button class="btn" data-back="2" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="actionNext" type="button" disabled>Next →</button></div></div>
+  </section>
 
+  <section class="panel step-panel" id="stepDetail" data-step="4" hidden aria-labelledby="detail-title">
+    <div class="step-label"><span class="step-number">4</span> Add detail</div>
+    <h2 id="detail-title">Choose one way to strengthen it</h2>
+    <div class="bullet-so-far"><div class="label">Bullet so far</div><div class="text" id="detailBulletDisplay"></div></div>
+    <div class="detail-options" role="group" aria-label="Choose a detail to add">
+      <button type="button" class="detail-option" data-detail="scope" aria-pressed="false">Who / scope</button>
+      <button type="button" class="detail-option" data-detail="how" aria-pressed="false">How</button>
+      <button type="button" class="detail-option" data-detail="result" aria-pressed="false">Why / result</button>
+    </div>
+    <div class="detail-editor" id="scopeEditor" hidden><label for="scopeDetail">Who, how much, or how often?</label><span class="hint">Scale or frequency, when useful.</span><input id="scopeDetail" type="text" autocomplete="off" placeholder="e.g., for 40 residents each month"></div>
+    <div class="detail-editor" id="howEditor" hidden><label for="howDetail">How or with what?</label><span class="hint">Method, tool, skill, or approach.</span><input id="howDetail" type="text" autocomplete="off" placeholder="e.g., using resident feedback and campus resources"></div>
+    <div class="detail-editor" id="resultEditor" hidden><label for="resultDetail">Why or what happened?</label><span class="hint">Purpose, result, or outcome.</span><input id="resultDetail" type="text" autocomplete="off" placeholder="e.g., to strengthen community and connect students to support"></div>
+    <div class="actions step-actions"><button class="btn" data-back="3" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="detailNext" type="button" disabled>Review →</button></div></div>
+    <div class="status" id="detailStatus" role="status" aria-live="polite"></div>
+  </section>
+
+  <section class="panel step-panel" id="stepReview" data-step="5" hidden aria-labelledby="review-title">
+    <div class="step-label"><span class="step-number">5</span> Review</div>
+    <h2 id="review-title">Quick check</h2>
     <div class="review-grid" id="reviewGrid"></div>
-
-    <div class="tip-box" id="quantTip"></div>
-
-    <div class="final-box">
-      <label for="finalBullet">Your bullet <span class="hint">— edit anything that sounds awkward or inaccurate</span></label>
-      <textarea id="finalBullet"></textarea>
-    </div>
-
-    <div class="actions" id="decisionActions">
-      <button class="btn primary" id="keepBtn" type="button">Keep This Bullet</button>
-      <button class="btn soft" id="discardBtn" type="button">Discard This Bullet</button>
-    </div>
+    <div class="final-box"><label for="finalBullet">Your bullet <span class="hint">— edit for accuracy and flow. Keep it concise—not a full sentence.</span></label><textarea id="finalBullet"></textarea></div>
+    <div class="formula-strip"><strong>Final check:</strong> Skill (power verb) + what you did + useful detail about who, how, or why</div>
+    <div class="tip-box"><strong>Example:</strong> Coordinated weekly programs for 40 residents to increase participation<br><span class="hint">No “I” and no ending period.</span></div>
+    <div class="actions step-actions" id="decisionActions"><button class="btn" data-back="4" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="keepBtn" type="button">Keep This Bullet</button><button class="btn soft" id="discardBtn" type="button">Discard This Bullet</button></div></div>
     <div class="status" id="resultStatus" role="status" aria-live="polite"></div>
-
     <div id="afterDecision" hidden>
-      <div class="actions">
-        <button class="btn soft" id="anotherBtn" type="button">Build Another for This Experience</button>
-        <button class="btn soft" id="differentBtn" type="button">Build for a Different Experience</button>
-      </div>
-
-      <div class="saved-wrap" id="savedWrap">
-        <h3>Bullets you’ve kept for this experience</h3>
-        <div class="saved-list" id="savedList"></div>
-        <div class="tip-box" id="saveReminder"><strong>Save a copy before you leave.</strong> Recent work may carry into other tools on this device when available, but browser storage is not guaranteed.</div>
-        <div class="actions">
-          <button class="btn" id="copyAllBtn" type="button" disabled>Copy My Bullets</button>
-          <button class="btn" id="printBtn" type="button" disabled>Print / Save</button>
-        </div>
-      </div>
+      <div class="actions"><button class="btn soft" id="anotherBtn" type="button">Build Another for This Experience</button><button class="btn soft" id="differentBtn" type="button">Build for a Different Experience</button></div>
+      <div class="saved-wrap"><h3>Bullets you’ve kept for this experience</h3><div class="saved-list" id="savedList"></div><div class="tip-box"><strong>Save a copy before you leave.</strong> Recent work may carry into other tools on this device when available, but browser storage is not guaranteed.</div><div class="actions"><button class="btn" id="copyAllBtn" type="button" disabled>Copy My Bullets</button><button class="btn" id="printBtn" type="button" disabled>Print / Save</button></div></div>
     </div>
-
     <p class="resource-link"><a href="https://careers.uiowa.edu/resumes" target="_blank" rel="noopener">See complete resume guidance and examples</a></p>
     <p class="disclaimer">Only include responsibilities, skills, numbers, and results that accurately reflect your experience.</p>
   </section>
 </main>
-
 <script>
 (()=>{
-  'use strict';
-
-  const EXPERIENCE_BANK_KEY='uiowaCareerExperienceBank_v1';
-  const SKILLS_BANK_KEY='uiowaCareerSkillsBank_v1';
-  const BULLET_BANK_KEY='uiowaCareerBulletBank_v1';
-
-  const verbGroups={
-    lead:{label:'Lead & organize', short:'Led or organized', hint:'projects, events, people, logistics', verbs:[['Coordinate','Coordinated'],['Lead','Led'],['Organize','Organized'],['Plan','Planned'],['Manage','Managed'],['Facilitate','Facilitated'],['Supervise','Supervised'],['Direct','Directed']]},
-    communicate:{label:'Communicate & teach', short:'Communicated or taught', hint:'customers, groups, writing, explanations', verbs:[['Communicate','Communicated'],['Present','Presented'],['Explain','Explained'],['Write','Wrote'],['Teach','Taught'],['Advise','Advised'],['Inform','Informed'],['Facilitate','Facilitated']]},
-    support:{label:'Support & serve', short:'Supported or served', hint:'customers, students, clients, teammates', verbs:[['Assist','Assisted'],['Support','Supported'],['Serve','Served'],['Mentor','Mentored'],['Guide','Guided'],['Coach','Coached'],['Resolve','Resolved'],['Respond','Responded']]},
-    create:{label:'Create & improve', short:'Created or improved', hint:'programs, materials, processes, products', verbs:[['Develop','Developed'],['Create','Created'],['Design','Designed'],['Implement','Implemented'],['Improve','Improved'],['Streamline','Streamlined'],['Launch','Launched'],['Revise','Revised']]},
-    analyze:{label:'Research & analyze', short:'Researched or analyzed', hint:'data, evidence, options, trends', verbs:[['Analyze','Analyzed'],['Research','Researched'],['Evaluate','Evaluated'],['Assess','Assessed'],['Investigate','Investigated'],['Interpret','Interpreted'],['Compare','Compared'],['Identify','Identified']]},
-    solve:{label:'Solve & achieve', short:'Solved or achieved', hint:'problems, goals, improvements, outcomes', verbs:[['Resolve','Resolved'],['Improve','Improved'],['Increase','Increased'],['Reduce','Reduced'],['Complete','Completed'],['Achieve','Achieved'],['Generate','Generated'],['Secure','Secured']]},
-    technical:{label:'Technology & process', short:'Used tools or systems', hint:'software, equipment, records, workflows', verbs:[['Track','Tracked'],['Document','Documented'],['Maintain','Maintained'],['Configure','Configured'],['Program','Programmed'],['Operate','Operated'],['Process','Processed'],['Monitor','Monitored']]},
-    collaborate:{label:'Collaborate & coordinate', short:'Worked with others', hint:'teams, partners, stakeholders, schedules', verbs:[['Collaborate','Collaborated'],['Coordinate','Coordinated'],['Partner','Partnered'],['Contribute','Contributed'],['Consult','Consulted'],['Negotiate','Negotiated'],['Connect','Connected'],['Engage','Engaged']]}
-  };
-
-  const afterDecision=document.getElementById('afterDecision');
-  const discardBtn=document.getElementById('discardBtn');
-  const starterVerbs=['Led','Organized','Created','Supported','Communicated','Analyzed','Improved'];
-  const moreVerbs=['Planned','Managed','Facilitated','Presented','Explained','Advised','Developed','Implemented','Evaluated','Researched','Resolved','Achieved','Tracked','Documented','Coordinated','Engaged'];
-
-  let activeGroup='lead';
-  let selectedVerb='';
-  let recentExperiences=[];
-  let skillsBank=[];
-  let selectedRecentId=null;
-
-  const choosePanel=document.getElementById('choosePanel');
-  const buildPanel=document.getElementById('buildPanel');
-  const reviewPanel=document.getElementById('reviewPanel');
-  const recentWrap=document.getElementById('recentWrap');
-  const recentList=document.getElementById('recentList');
-  const experienceName=document.getElementById('experienceName');
-  const experienceContext=document.getElementById('experienceContext');
-  const chooseStatus=document.getElementById('chooseStatus');
-  const skillHandoff=document.getElementById('skillHandoff');
-  const skillHandoffList=document.getElementById('skillHandoffList');
-  const starterVerbWrap=document.getElementById('starterVerbWrap');
-  const starterVerbList=document.getElementById('starterVerbList');
-  const moreVerbDetails=document.getElementById('moreVerbDetails');
-  const verbList=document.getElementById('verbList');
-  const customVerb=document.getElementById('customVerb');
-  const whatDid=document.getElementById('whatDid');
-  const verbHeading=document.getElementById('verbHeading');
-  const verbInputShell=document.getElementById('verbInputShell');
-  const verbPrefix=document.getElementById('verbPrefix');
-  const whatDidHelp=document.getElementById('whatDidHelp');
-  const scopeDetail=document.getElementById('scopeDetail');
-  const howDetail=document.getElementById('howDetail');
-  const resultDetail=document.getElementById('resultDetail');
-  const previewText=document.getElementById('previewText');
-  const reviewBtn=document.getElementById('reviewBtn');
-  const backBtn=document.getElementById('backBtn');
-  const buildStatus=document.getElementById('buildStatus');
-  const reviewGrid=document.getElementById('reviewGrid');
-  const quantTip=document.getElementById('quantTip');
-  const finalBullet=document.getElementById('finalBullet');
-  const keepBtn=document.getElementById('keepBtn');
-  const copyAllBtn=document.getElementById('copyAllBtn');
-  const printBtn=document.getElementById('printBtn');
-  const anotherBtn=document.getElementById('anotherBtn');
-  const differentBtn=document.getElementById('differentBtn');
-  const resultStatus=document.getElementById('resultStatus');
-  const savedList=document.getElementById('savedList');
-
-  function escapeHtml(value){return String(value??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
-  function normalize(value){return String(value||'').trim().toLowerCase();}
-  function trimPiece(value){return String(value||'').trim().replace(/[.;,]+$/,'');}
-
-  function safeRead(key){
-    try{const value=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(value)?value:[];}catch(e){return [];}
-  }
-  function safeWrite(key,value){
-    try{localStorage.setItem(key,JSON.stringify(value));return true;}catch(e){return false;}
-  }
-
-  function loadHandoffs(){
-    recentExperiences=safeRead(EXPERIENCE_BANK_KEY).filter(x=>x&&x.experienceName).slice(0,8);
-    skillsBank=safeRead(SKILLS_BANK_KEY).filter(x=>x&&x.experienceName);
-    renderRecent();
-  }
-
-  function renderRecent(){
-    recentList.innerHTML='';
-    recentWrap.hidden=!recentExperiences.length;
-    recentExperiences.forEach((exp,index)=>{
-      const id=exp.id||`${exp.experienceName}-${index}`;
-      const btn=document.createElement('button');
-      btn.type='button';btn.className='recent-btn';btn.setAttribute('aria-pressed',String(selectedRecentId===id));
-      btn.innerHTML=`${escapeHtml(exp.experienceName)}${exp.context?`<span class="recent-context">${escapeHtml(exp.context)}</span>`:''}`;
-      btn.addEventListener('click',()=>{
-        selectedRecentId=id;
-        experienceName.value=exp.experienceName||'';
-        experienceContext.value=exp.context||'';
-        renderRecent();
-        chooseStatus.textContent='';
-        prepareBuildForExperience();
-      });
-      recentList.appendChild(btn);
-    });
-  }
-
-  function skillResultFor(name){
-    const target=normalize(name);
-    return skillsBank.find(item=>normalize(item.experienceName)===target)||null;
-  }
-
-  function renderSkillHandoff(){
-    const match=skillResultFor(experienceName.value);
-    skillHandoffList.innerHTML='';
-    if(!match||!Array.isArray(match.competencies)){
-      skillHandoff.hidden=true;
-      starterVerbWrap.hidden=false;
-      moreVerbDetails.open=false;
-      return;
-    }
-    const verbs=[];
-    match.competencies.forEach(c=>(c.skills||[]).forEach(v=>{if(v&&!verbs.includes(v))verbs.push(v);}));
-    const names=verbs.slice(0,8);
-    if(!names.length){
-      skillHandoff.hidden=true;
-      starterVerbWrap.hidden=false;
-      moreVerbDetails.open=false;
-      return;
-    }
-    names.forEach(verb=>{
-      const btn=document.createElement('button');
-      btn.type='button';
-      btn.className='verb-btn';
-      btn.textContent=verb;
-      btn.setAttribute('aria-pressed',String(selectedVerb===verb&&customVerb.value.trim()===''));
-      btn.addEventListener('click',()=>{selectedVerb=verb;customVerb.value='';renderSkillHandoff();renderVerbs();updatePreview();});
-      skillHandoffList.appendChild(btn);
-    });
-    skillHandoff.hidden=false;
-    starterVerbWrap.hidden=true;
-    if(!selectedVerb) moreVerbDetails.open=false;
-  }
-
-  function renderStarterVerbs(){
-    starterVerbList.innerHTML='';
-    starterVerbs.forEach(verb=>{
-      const btn=document.createElement('button');
-      btn.type='button';btn.className='verb-btn';btn.textContent=verb;
-      btn.setAttribute('aria-pressed',String(selectedVerb===verb&&customVerb.value.trim()===''));
-      btn.addEventListener('click',()=>{selectedVerb=verb;customVerb.value='';renderStarterVerbs();renderSkillHandoff();renderVerbs();updatePreview();});
-      starterVerbList.appendChild(btn);
-    });
-  }
-
-  function renderVerbs(){
-    verbList.innerHTML='';
-    moreVerbs.forEach(verb=>{
-      const btn=document.createElement('button');btn.type='button';btn.className='verb-btn';btn.textContent=verb;
-      btn.setAttribute('aria-pressed',String(selectedVerb===verb&&customVerb.value.trim()===''));
-      btn.addEventListener('click',()=>{selectedVerb=verb;customVerb.value='';renderStarterVerbs();renderSkillHandoff();renderVerbs();updatePreview();});
-      verbList.appendChild(btn);
-    });
-  }
-
-  function chosenVerb(){
-    const typed=trimPiece(customVerb.value);
-    if(!typed)return selectedVerb;
-    const lower=typed.toLowerCase();
-    for(const group of Object.values(verbGroups)){
-      for(const [present,past] of group.verbs){
-        if(lower===present.toLowerCase())return past;
-      }
-    }
-    return typed;
-  }
-
-  function updateWhatDidState(){
-    const verb=chosenVerb();
-    const hasVerb=!!verb;
-    whatDid.disabled=!hasVerb;
-    verbInputShell.classList.toggle('locked',!hasVerb);
-    verbPrefix.hidden=!hasVerb;
-    verbPrefix.textContent=hasVerb?verb:'';
-    whatDid.placeholder=hasVerb?'e.g., weekly community-building programs for residents':'Choose a power verb above to unlock this step';
-    whatDidHelp.textContent=hasVerb?'Your power verb starts the bullet. Add what you did after it.':'Choose a power verb first. It will appear here automatically, then you can add what you did.';
-  }
-
-  function buildBullet(){
-    const parts=[chosenVerb(),trimPiece(whatDid.value),trimPiece(scopeDetail.value),trimPiece(howDetail.value),trimPiece(resultDetail.value)].filter(Boolean);
-    return parts.join(' ').replace(/\s+/g,' ').trim();
-  }
-
-  function updatePreview(){
-    updateWhatDidState();
-    const bullet=buildBullet();
-    if(!bullet){previewText.innerHTML='<span class="preview-empty">Choose a verb and describe what you did to start your bullet.</span>';}
-    else{previewText.textContent=bullet;}
-    reviewBtn.disabled=!(chosenVerb()&&trimPiece(whatDid.value));
-  }
-
-  customVerb.addEventListener('input',()=>{if(customVerb.value.trim())selectedVerb='';renderStarterVerbs();renderSkillHandoff();renderVerbs();updatePreview();});
-  [whatDid,scopeDetail,howDetail,resultDetail].forEach(el=>el.addEventListener('input',updatePreview));
-
-  function prepareBuildForExperience(){
-    const hasExperience=!!experienceName.value.trim();
-    buildPanel.hidden=!hasExperience;
-    if(!hasExperience){reviewPanel.hidden=true;return;}
-    renderSkillHandoff();renderStarterVerbs();renderVerbs();updatePreview();
-  }
-
-  backBtn.addEventListener('click',()=>{
-    buildPanel.hidden=true;reviewPanel.hidden=true;chooseStatus.textContent='';
-    choosePanel.scrollIntoView({behavior:'smooth',block:'start'});
-  });
-
-  function renderReview(){
-    const cards=[];
-    cards.push({title:'Starts with a past-tense action verb',body:`Your draft begins with “${chosenVerb()}.”`,good:true});
-    cards.push({title:'Says what you did',body:trimPiece(whatDid.value),good:true});
-    const details=[trimPiece(scopeDetail.value),trimPiece(howDetail.value),trimPiece(resultDetail.value)].filter(Boolean);
-    if(details.length){cards.push({title:'Adds useful context',body:'You included detail about scope, method, purpose, or result.',good:true});}
-    else{cards.push({title:'Consider one more detail',body:'Who, how, how often, why, or what happened could make this more specific—if the detail is meaningful and true.',good:false});}
-    if(trimPiece(resultDetail.value)){cards.push({title:'Shows purpose or result',body:trimPiece(resultDetail.value),good:true});}
-    else{cards.push({title:'Result is optional',body:'Add an outcome or purpose when you can support it. Do not invent a result just to complete the formula.',good:false});}
-    reviewGrid.innerHTML='';
-    cards.forEach(c=>{
-      const div=document.createElement('div');
-      div.className=`review-card ${c.good?'good':'attention'}`;
-      const status=c.good
-        ? '<div class="review-status"><span class="marker" aria-hidden="true">●</span><span>Included</span></div>'
-        : '<div class="review-status"><span class="marker" aria-hidden="true">◆</span><span>Consider</span></div>';
-      div.innerHTML=`${status}<strong>${escapeHtml(c.title)}</strong><p>${escapeHtml(c.body)}</p>`;reviewGrid.appendChild(div);
-    });
-    const hasNumber=/\d/.test([scopeDetail.value,howDetail.value,resultDetail.value,whatDid.value].join(' '));
-    quantTip.innerHTML=hasNumber
-      ? '<strong>Useful context:</strong> You included a number. Keep it only if it is accurate and helps a reader understand your scope, frequency, or result.'
-      : '<strong>Could a number help?</strong> Consider frequency, people served, items handled, dollars, time, percentage, or project size. Quantify when it adds real context—not because every bullet needs a number.';
-  }
-
-  reviewBtn.addEventListener('click',()=>{
-    buildStatus.textContent='';
-    if(!chosenVerb()||!trimPiece(whatDid.value)){buildStatus.textContent='Choose a verb and describe what you did first.';return;}
-    finalBullet.value=buildBullet();renderReview();renderSaved();afterDecision.hidden=true;reviewPanel.hidden=false;
-    reviewPanel.scrollIntoView({behavior:'smooth',block:'start'});
-  });
-
-  function savedForExperience(){
-    const name=normalize(experienceName.value);
-    return safeRead(BULLET_BANK_KEY).filter(item=>item&&normalize(item.experienceName)===name);
-  }
-
-  function renderSaved(){
-    const saved=savedForExperience();savedList.innerHTML='';
-    copyAllBtn.disabled=!saved.length;printBtn.disabled=!saved.length;
-    if(!saved.length){savedList.innerHTML='<div class="empty">No bullets kept yet. Keep each finished bullet here, then save or copy the set when you are done with this experience.</div>';return;}
-    saved.forEach(item=>{
-      const card=document.createElement('div');card.className='saved-card';
-      const text=document.createElement('div');text.className='saved-bullet';text.textContent=`• ${item.bullet}`;
-      const actions=document.createElement('div');actions.className='saved-actions';
-      const copy=document.createElement('button');copy.type='button';copy.className='btn small';copy.textContent='Copy';
-      copy.addEventListener('click',()=>copyText(item.bullet,'Copied saved bullet.'));
-      const remove=document.createElement('button');remove.type='button';remove.className='btn small';remove.textContent='Remove';
-      remove.addEventListener('click',()=>removeSaved(item.id));
-      actions.append(copy,remove);card.append(text,actions);savedList.appendChild(card);
-    });
-  }
-
-  function keepBullet(){
-    resultStatus.textContent='';
-    const bullet=trimPiece(finalBullet.value);
-    if(!bullet){resultStatus.textContent='Add your final bullet first.';finalBullet.focus();return;}
-    let bank=safeRead(BULLET_BANK_KEY);
-    const duplicate=bank.some(item=>item&&normalize(item.experienceName)===normalize(experienceName.value)&&normalize(item.bullet)===normalize(bullet));
-    if(!duplicate){
-      bank.unshift({
-        id:`bullet-${Date.now()}-${Math.random().toString(36).slice(2,8)}`,
-        experienceName:experienceName.value.trim(),
-        context:experienceContext.value.trim(),
-        bullet,
-        updatedAt:new Date().toISOString()
-      });
-      bank=bank.slice(0,60);
-    }
-    const stored=safeWrite(BULLET_BANK_KEY,bank);
-    resultStatus.textContent=stored?(duplicate?'This bullet is already in your recent work.':'Kept this bullet on this device.'):'Your browser blocked local saving. Copy or Print / Save the bullet instead.';
-    renderSaved();
-    afterDecision.hidden=false;
-  }
-
-  function removeSaved(id){
-    let bank=safeRead(BULLET_BANK_KEY).filter(item=>item&&item.id!==id);
-    safeWrite(BULLET_BANK_KEY,bank);renderSaved();resultStatus.textContent='Removed from recent work.';
-  }
-
-  async function copyText(text,message){
-    try{await navigator.clipboard.writeText(text);resultStatus.textContent=message;}
-    catch(e){
-      const ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
-      try{document.execCommand('copy');resultStatus.textContent=message;}catch(err){resultStatus.textContent='Copy was blocked by your browser. Select the bullet and copy it manually.';}ta.remove();
-    }
-  }
-
-  keepBtn.addEventListener('click',keepBullet);
-  discardBtn.addEventListener('click',()=>{
-    resultStatus.textContent='Discarded. Build another bullet or finish with the bullets you’ve already kept.';
-    afterDecision.hidden=false;
-    renderSaved();
-  });
-  copyAllBtn.addEventListener('click',()=>{
-    const saved=savedForExperience();
-    if(!saved.length){resultStatus.textContent='Keep at least one bullet first.';return;}
-    copyText(saved.map(item=>'• '+item.bullet).join('\n'),'Copied your saved bullets.');
-  });
-  printBtn.addEventListener('click',()=>window.print());
-
-  function resetBulletFields(){
-    selectedVerb='';customVerb.value='';whatDid.value='';scopeDetail.value='';howDetail.value='';resultDetail.value='';finalBullet.value='';reviewPanel.hidden=true;resultStatus.textContent='';buildStatus.textContent='';afterDecision.hidden=true;
-    renderSkillHandoff();renderStarterVerbs();renderVerbs();updatePreview();
-  }
-  function clearBulletFields(){
-    resetBulletFields();
-    buildPanel.hidden=false;
-    buildPanel.scrollIntoView({behavior:'smooth',block:'start'});
-    setTimeout(()=>verbHeading.focus(),350);
-  }
-  anotherBtn.addEventListener('click',clearBulletFields);
-  differentBtn.addEventListener('click',()=>{
-    resetBulletFields();
-    experienceName.value='';experienceContext.value='';selectedRecentId=null;
-    skillHandoff.hidden=true;starterVerbWrap.hidden=true;
-    renderRecent();
-    buildPanel.hidden=true;reviewPanel.hidden=true;chooseStatus.textContent='';
-    choosePanel.scrollIntoView({behavior:'smooth',block:'start'});
-    setTimeout(()=>experienceName.focus(),350);
-  });
-
-  experienceName.addEventListener('input',()=>{
-    const selected=recentExperiences.find((exp,index)=>(exp.id||`${exp.experienceName}-${index}`)===selectedRecentId);
-    if(!selected||normalize(experienceName.value)!==normalize(selected.experienceName)){selectedRecentId=null;renderRecent();}
-    chooseStatus.textContent='';
-    prepareBuildForExperience();
-  });
-
-  loadHandoffs();renderStarterVerbs();renderVerbs();updatePreview();prepareBuildForExperience();
+'use strict';
+const EXPERIENCE_BANK_KEY='uiowaCareerExperienceBank_v1',SKILLS_BANK_KEY='uiowaCareerSkillsBank_v1',BULLET_BANK_KEY='uiowaCareerBulletBank_v1';
+const starterVerbs=['Led','Organized','Created','Supported','Communicated','Analyzed','Improved'];
+const moreVerbs=['Planned','Managed','Facilitated','Presented','Explained','Advised','Developed','Implemented','Evaluated','Researched','Resolved','Achieved','Tracked','Documented','Coordinated','Engaged'];
+const verbMap={lead:'Led',organize:'Organized',create:'Created',support:'Supported',communicate:'Communicated',analyze:'Analyzed',improve:'Improved',plan:'Planned',manage:'Managed',facilitate:'Facilitated',present:'Presented',explain:'Explained',advise:'Advised',develop:'Developed',implement:'Implemented',evaluate:'Evaluated',research:'Researched',resolve:'Resolved',achieve:'Achieved',track:'Tracked',document:'Documented',coordinate:'Coordinated',engage:'Engaged',assist:'Assisted',serve:'Served',mentor:'Mentored',guide:'Guided',coach:'Coached',design:'Designed',streamline:'Streamlined',launch:'Launched',revise:'Revised',assess:'Assessed',investigate:'Investigated',interpret:'Interpreted',compare:'Compared',identify:'Identified',increase:'Increased',reduce:'Reduced',complete:'Completed',generate:'Generated',secure:'Secured',maintain:'Maintained',configure:'Configured',program:'Programmed',operate:'Operated',process:'Processed',monitor:'Monitored',collaborate:'Collaborated',partner:'Partnered',contribute:'Contributed',consult:'Consulted',negotiate:'Negotiated',connect:'Connected',respond:'Responded',write:'Wrote',teach:'Taught',inform:'Informed',direct:'Directed',supervise:'Supervised'};
+const $=id=>document.getElementById(id);
+const stepPanels=[...document.querySelectorAll('.step-panel')],chips=[...document.querySelectorAll('.step-chip')];
+const recentWrap=$('recentWrap'),recentList=$('recentList'),experienceName=$('experienceName'),experienceContext=$('experienceContext'),experienceNext=$('experienceNext'),experienceStatus=$('experienceStatus');
+const skillHandoff=$('skillHandoff'),skillHandoffList=$('skillHandoffList'),starterVerbWrap=$('starterVerbWrap'),starterVerbList=$('starterVerbList'),moreVerbDetails=$('moreVerbDetails'),verbList=$('verbList'),customVerb=$('customVerb'),verbNext=$('verbNext');
+const whatDid=$('whatDid'),verbPrefix=$('verbPrefix'),actionVerbDisplay=$('actionVerbDisplay'),actionNext=$('actionNext');
+const scopeDetail=$('scopeDetail'),howDetail=$('howDetail'),resultDetail=$('resultDetail'),detailOptions=[...document.querySelectorAll('.detail-option')],detailEditors={scope:$('scopeEditor'),how:$('howEditor'),result:$('resultEditor')},detailBulletDisplay=$('detailBulletDisplay'),detailNext=$('detailNext'),detailStatus=$('detailStatus');
+const reviewGrid=$('reviewGrid'),finalBullet=$('finalBullet'),keepBtn=$('keepBtn'),discardBtn=$('discardBtn'),afterDecision=$('afterDecision'),resultStatus=$('resultStatus'),savedList=$('savedList'),copyAllBtn=$('copyAllBtn'),printBtn=$('printBtn'),anotherBtn=$('anotherBtn'),differentBtn=$('differentBtn');
+let currentStep=1,selectedVerb='',selectedRecentId=null,activeDetail='',recentExperiences=[],skillsBank=[];
+function normalize(v){return String(v||'').trim().toLowerCase()}function trimPiece(v){return String(v||'').trim().replace(/[.;,]+$/,'')}function escapeHtml(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function safeRead(k){try{const v=JSON.parse(localStorage.getItem(k)||'[]');return Array.isArray(v)?v:[]}catch(e){return[]}}function safeWrite(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}
+function showStep(n,focus=true){currentStep=n;stepPanels.forEach(p=>p.hidden=Number(p.dataset.step)!==n);chips.forEach(c=>{const x=Number(c.dataset.chip);c.classList.toggle('current',x===n);c.classList.toggle('done',x<n)});if(focus){const panel=stepPanels.find(p=>Number(p.dataset.step)===n);panel?.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>panel?.querySelector('h2')?.focus?.(),250)}}
+function loadHandoffs(){recentExperiences=safeRead(EXPERIENCE_BANK_KEY).filter(x=>x&&x.experienceName).slice(0,8);skillsBank=safeRead(SKILLS_BANK_KEY).filter(x=>x&&x.experienceName);renderRecent()}
+function renderRecent(){recentList.innerHTML='';recentWrap.hidden=!recentExperiences.length;recentExperiences.forEach((exp,index)=>{const id=exp.id||`${exp.experienceName}-${index}`;const b=document.createElement('button');b.type='button';b.className='recent-btn';b.setAttribute('aria-pressed',String(selectedRecentId===id));b.innerHTML=`${escapeHtml(exp.experienceName)}${exp.context?`<span class="recent-context">${escapeHtml(exp.context)}</span>`:''}`;b.onclick=()=>{selectedRecentId=id;experienceName.value=exp.experienceName||'';experienceContext.value=exp.context||'';renderRecent();updateExperienceNext()};recentList.appendChild(b)})}
+function updateExperienceNext(){experienceNext.disabled=!experienceName.value.trim();experienceStatus.textContent=''}
+function skillResultFor(name){return skillsBank.find(x=>normalize(x.experienceName)===normalize(name))||null}
+function renderVerbButton(container,verb,rerender){const b=document.createElement('button');b.type='button';b.className='verb-btn';b.textContent=verb;b.setAttribute('aria-pressed',String(selectedVerb===verb&&!customVerb.value.trim()));b.onclick=()=>{selectedVerb=verb;customVerb.value='';rerender();updateVerbNext()};container.appendChild(b)}
+function renderSkillHandoff(){skillHandoffList.innerHTML='';const match=skillResultFor(experienceName.value);const verbs=[];(match?.competencies||[]).forEach(c=>(c.selectedVerbs||c.verbs||[]).forEach(v=>{if(v&&!verbs.includes(v))verbs.push(v)}));const names=verbs.slice(0,8);skillHandoff.hidden=!names.length;starterVerbWrap.hidden=!!names.length;if(names.length)names.forEach(v=>renderVerbButton(skillHandoffList,v,renderAllVerbs));}
+function renderStarter(){starterVerbList.innerHTML='';starterVerbs.forEach(v=>renderVerbButton(starterVerbList,v,renderAllVerbs))}
+function renderMore(){verbList.innerHTML='';moreVerbs.forEach(v=>renderVerbButton(verbList,v,renderAllVerbs))}
+function renderAllVerbs(){renderSkillHandoff();renderStarter();renderMore()}
+function chosenVerb(){const typed=trimPiece(customVerb.value);if(!typed)return selectedVerb;return verbMap[typed.toLowerCase()]||typed}
+function updateVerbNext(){verbNext.disabled=!chosenVerb()}
+function buildBase(){return [chosenVerb(),trimPiece(whatDid.value)].filter(Boolean).join(' ').replace(/\s+/g,' ').trim()}
+function buildBullet(){return [chosenVerb(),trimPiece(whatDid.value),trimPiece(scopeDetail.value),trimPiece(howDetail.value),trimPiece(resultDetail.value)].filter(Boolean).join(' ').replace(/\s+/g,' ').trim()}
+function updateAction(){verbPrefix.textContent=chosenVerb();actionVerbDisplay.textContent=chosenVerb();actionNext.disabled=!trimPiece(whatDid.value)}
+function setActiveDetail(kind=''){activeDetail=kind;detailOptions.forEach(b=>b.setAttribute('aria-pressed',b.dataset.detail===kind?'true':'false'));Object.entries(detailEditors).forEach(([k,e])=>e.hidden=k!==kind);updateDetail()}
+function activeDetailValue(){return activeDetail==='scope'?trimPiece(scopeDetail.value):activeDetail==='how'?trimPiece(howDetail.value):activeDetail==='result'?trimPiece(resultDetail.value):''}
+function updateDetail(){detailBulletDisplay.textContent=buildBase()||'';detailNext.disabled=!(activeDetail&&activeDetailValue());detailStatus.textContent=''}
+function renderReview(){const detailLabels=[];if(trimPiece(scopeDetail.value))detailLabels.push('Who / scope');if(trimPiece(howDetail.value))detailLabels.push('How');if(trimPiece(resultDetail.value))detailLabels.push('Why / result');const hasNumber=/\d/.test([whatDid.value,scopeDetail.value,howDetail.value,resultDetail.value].join(' '));const cards=[{title:'Skill / verb',body:chosenVerb(),good:true},{title:'What you did',body:trimPiece(whatDid.value),good:true},{title:'Useful detail',body:detailLabels.join(' + '),good:true},{title:'Data',body:hasNumber?'Included where relevant':'Consider only if it adds useful context or strengthens the bullet',good:hasNumber}];reviewGrid.innerHTML='';cards.forEach(c=>{const d=document.createElement('div');d.className=`review-card ${c.good?'good':'attention'}`;d.innerHTML=`<div class="review-status"><span aria-hidden="true">${c.good?'●':'◆'}</span><span>${c.good?'Included':'Consider'}</span></div><strong>${escapeHtml(c.title)}</strong><p>${escapeHtml(c.body)}</p>`;reviewGrid.appendChild(d)})}
+function savedForExperience(){return safeRead(BULLET_BANK_KEY).filter(x=>x&&normalize(x.experienceName)===normalize(experienceName.value))}
+function renderSaved(){const saved=savedForExperience();savedList.innerHTML='';copyAllBtn.disabled=!saved.length;printBtn.disabled=!saved.length;if(!saved.length){savedList.innerHTML='<div class="empty">No bullets kept yet.</div>';return}saved.forEach(item=>{const card=document.createElement('div');card.className='saved-card';card.innerHTML=`<div class="saved-bullet">• ${escapeHtml(item.bullet)}</div>`;const a=document.createElement('div');a.className='saved-actions';const copy=document.createElement('button');copy.type='button';copy.className='btn small';copy.textContent='Copy';copy.onclick=()=>copyText(item.bullet,'Copied saved bullet.');const remove=document.createElement('button');remove.type='button';remove.className='btn small';remove.textContent='Remove';remove.onclick=()=>{safeWrite(BULLET_BANK_KEY,safeRead(BULLET_BANK_KEY).filter(x=>x&&x.id!==item.id));renderSaved();resultStatus.textContent='Removed from recent work.'};a.append(copy,remove);card.appendChild(a);savedList.appendChild(card)})}
+function prepareReview(){finalBullet.value=buildBullet();renderReview();renderSaved();afterDecision.hidden=true;resultStatus.textContent='';showStep(5)}
+async function copyText(text,msg){try{await navigator.clipboard.writeText(text);resultStatus.textContent=msg}catch(e){const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');resultStatus.textContent=msg}catch(err){resultStatus.textContent='Copy was blocked. Select and copy manually.'}ta.remove()}}
+experienceName.addEventListener('input',()=>{const selected=recentExperiences.find((exp,index)=>(exp.id||`${exp.experienceName}-${index}`)===selectedRecentId);if(!selected||normalize(experienceName.value)!==normalize(selected.experienceName)){selectedRecentId=null;renderRecent()}updateExperienceNext()});
+experienceNext.onclick=()=>{if(!experienceName.value.trim()){experienceStatus.textContent='Add an experience first.';return}renderAllVerbs();updateVerbNext();showStep(2)};
+customVerb.addEventListener('input',()=>{if(customVerb.value.trim())selectedVerb='';renderAllVerbs();updateVerbNext()});
+verbNext.onclick=()=>{if(!chosenVerb())return;updateAction();showStep(3)};
+whatDid.addEventListener('input',updateAction);actionNext.onclick=()=>{if(!trimPiece(whatDid.value))return;updateDetail();showStep(4)};
+detailOptions.forEach(b=>b.onclick=()=>setActiveDetail(b.dataset.detail));[scopeDetail,howDetail,resultDetail].forEach(i=>i.addEventListener('input',updateDetail));detailNext.onclick=()=>{if(!(activeDetail&&activeDetailValue())){detailStatus.textContent='Choose who / scope, how, or why / result and add one detail.';return}prepareReview()};
+document.querySelectorAll('[data-back]').forEach(b=>b.addEventListener('click',()=>showStep(Number(b.dataset.back))));
+keepBtn.onclick=()=>{const bullet=trimPiece(finalBullet.value);if(!bullet){resultStatus.textContent='Add your final bullet first.';return}let bank=safeRead(BULLET_BANK_KEY);const dup=bank.some(x=>x&&normalize(x.experienceName)===normalize(experienceName.value)&&normalize(x.bullet)===normalize(bullet));if(!dup){bank.unshift({id:`bullet-${Date.now()}-${Math.random().toString(36).slice(2,8)}`,experienceName:experienceName.value.trim(),context:experienceContext.value.trim(),bullet,updatedAt:new Date().toISOString()});bank=bank.slice(0,60)}const stored=safeWrite(BULLET_BANK_KEY,bank);resultStatus.textContent=stored?(dup?'This bullet is already in your recent work.':'Kept this bullet on this device.'):'Browser storage was blocked. Copy or Print / Save instead.';renderSaved();afterDecision.hidden=false};
+discardBtn.onclick=()=>{resultStatus.textContent='Discarded. Build another bullet or finish with the bullets you’ve kept.';renderSaved();afterDecision.hidden=false};
+copyAllBtn.onclick=()=>{const saved=savedForExperience();if(saved.length)copyText(saved.map(x=>'• '+x.bullet).join('\n'),'Copied your saved bullets.')};printBtn.onclick=()=>window.print();
+function resetBullet(){selectedVerb='';customVerb.value='';whatDid.value='';scopeDetail.value='';howDetail.value='';resultDetail.value='';finalBullet.value='';activeDetail='';setActiveDetail('');afterDecision.hidden=true;resultStatus.textContent='';moreVerbDetails.open=false;renderAllVerbs();updateVerbNext();updateAction();updateDetail()}
+anotherBtn.onclick=()=>{resetBullet();showStep(2)};
+differentBtn.onclick=()=>{resetBullet();experienceName.value='';experienceContext.value='';selectedRecentId=null;renderRecent();updateExperienceNext();showStep(1);setTimeout(()=>experienceName.focus(),300)};
+loadHandoffs();renderStarter();renderMore();updateExperienceNext();showStep(1,false);
 })();
 </script>
 </body>
