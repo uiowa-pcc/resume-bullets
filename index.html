@@ -24,9 +24,10 @@ h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{f
 .detail-options{margin-top:9px}.detail-editor{margin-top:12px;border:1px solid #D8D8D8;border-radius:12px;padding:12px;background:#fff}.detail-editor label{display:block;font-size:.92rem;margin-bottom:4px}.detail-editor .hint{display:block;line-height:1.35;margin-bottom:8px}.detail-editor input{min-height:42px;font-size:.92rem}
 .review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:15px 0}.review-card{border:1px solid #D9D9D9;border-radius:12px;padding:13px;background:#fff}.review-card.good{background:#FAFAFA}.review-card.attention{border-color:#D6B100;background:#FFF9E6;box-shadow:inset 4px 0 0 var(--gold)}.review-card strong{display:block;margin-bottom:3px}.review-card p{font-size:.87rem;color:#424345;margin:0}.review-status{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;font-weight:700;margin-bottom:7px;color:#555}.review-card.attention .review-status{color:#5A4A00}.formula-strip{margin:14px 0 0;padding:9px 11px;background:var(--soft);border-radius:10px;font-size:.86rem}.tip-box{margin:10px 0 0;padding:12px 14px;background:var(--soft);border-radius:12px;font-size:.9rem}.final-box label{display:block;margin-bottom:6px}.final-box textarea{min-height:105px;font-size:1rem}
 .saved-wrap{margin-top:18px;padding-top:17px;border-top:1px solid #E6E6E6}.saved-wrap h3{font-size:1.02rem;margin-bottom:3px}.saved-list{display:grid;gap:9px;margin-top:10px}.saved-card{border:1px solid #D8D8D8;border-radius:12px;padding:12px;background:#FAFAFA}.saved-bullet{font-size:.92rem;overflow-wrap:anywhere}.saved-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.empty{padding:18px;text-align:center;border:1.5px dashed #BFC0C1;border-radius:12px;background:#FAFAFA;color:var(--gray);font-size:.9rem}.disclaimer{font-size:.82rem;color:var(--gray);margin-top:12px}
+.ai-help{margin:16px 0 0;padding:14px 15px;background:#FFFCF0;border:1px solid #E2D9A8;border-left:5px solid var(--gold);border-radius:0 12px 12px 0}.ai-help h3{font-size:1.02rem;margin:0 0 5px}.ai-help p{font-size:.89rem;color:#3F4042;margin:0 0 10px}.ai-label{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#555;margin-bottom:4px}.ai-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:3px}.ai-actions .btn{margin:0}.ai-status{min-height:1.25em;margin-top:8px;font-size:.86rem;font-weight:700}.ai-details{margin-top:8px;font-size:.84rem;color:#555}.ai-details summary{cursor:pointer;font-weight:700;color:#333}.ai-details p{font-size:.84rem;margin:7px 0 0;color:#555}.ai-privacy{font-size:.78rem!important;color:var(--gray)!important;margin-top:8px!important}
 @media(max-width:760px){.shell{padding:12px 10px 8px}.intro,.panel{padding:20px 17px;border-radius:16px}.form-grid,.review-grid{grid-template-columns:1fr}.stepper{display:flex;overflow-x:auto;gap:6px;padding-bottom:2px}.step-chip{min-width:92px;flex:0 0 auto}.step-actions{gap:8px}.step-actions .right-actions{margin-left:0}.step-actions,.step-actions .right-actions{width:100%}.step-actions .btn{flex:1}}
-@media(max-width:440px){.actions .btn{width:100%}.recent-btn{width:100%}.saved-actions .btn{width:auto;flex:1}.step-actions .right-actions{display:flex}.step-actions .right-actions .btn{width:auto}}
-@media print{body{background:#fff;font-size:11pt}.shell{max-width:none;padding:0}.intro,.panel{box-shadow:none;border:0;padding:0;margin:0}.intro,.panel:not(#stepReview){display:none!important}#stepReview{display:block!important}.stepper,.step-label,#stepReview .review-grid,#stepReview .formula-strip,#stepReview .tip-box,#stepReview .actions,#stepReview .status,#stepReview .resource-link,#stepReview .disclaimer,#stepReview .saved-actions{display:none!important}.final-box textarea{border:0;padding:0;min-height:0;height:auto;resize:none}.saved-card{break-inside:avoid;background:#fff}h2{font-size:20pt}}
+@media(max-width:440px){.actions .btn{width:100%}.recent-btn{width:100%}.saved-actions .btn{width:auto;flex:1}.step-actions .right-actions{display:flex}.step-actions .right-actions .btn{width:auto}.ai-actions{display:grid;grid-template-columns:1fr}.ai-actions .btn{width:100%}}
+@media print{body{background:#fff;font-size:11pt}.shell{max-width:none;padding:0}.intro,.panel{box-shadow:none;border:0;padding:0;margin:0}.intro,.panel:not(#stepReview){display:none!important}#stepReview{display:block!important}.stepper,.step-label,#stepReview .review-grid,#stepReview .formula-strip,#stepReview .tip-box,#stepReview .ai-help,#stepReview .actions,#stepReview .status,#stepReview .resource-link,#stepReview .disclaimer,#stepReview .saved-actions{display:none!important}.final-box textarea{border:0;padding:0;min-height:0;height:auto;resize:none}.saved-card{break-inside:avoid;background:#fff}h2{font-size:20pt}}
 </style>
 </head>
 <body>
@@ -66,9 +67,9 @@ h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{f
     <div class="step-label"><span class="step-number">2</span> Power verb</div>
     <h2 id="verb-title">Choose a power verb</h2>
     <p class="section-copy">Use past tense. A job description can also give you ideas—only use verbs that accurately describe what you did.</p>
-    <div class="skill-handoff" id="skillHandoff" hidden><strong>Your suggested power verbs</strong><div class="verb-list" id="skillHandoffList"></div></div>
+    <div class="skill-handoff" id="skillHandoff" hidden><strong>From your skills activity</strong><p class="recent-note">Power verbs related to skills you selected for this experience.</p><div class="verb-list" id="skillHandoffList"></div></div>
     <div class="skill-handoff" id="starterVerbWrap" hidden><strong>Start with one of these</strong><div class="verb-list" id="starterVerbList"></div></div>
-    <details class="verb-area" id="moreVerbDetails"><summary><strong>Need another verb?</strong></summary><div style="margin-top:12px"><div class="verb-list" id="verbList"></div><div class="field custom-verb"><label for="customVerb">Or type your own past-tense verb</label><input id="customVerb" type="text" autocomplete="off" placeholder="e.g., Reconciled"></div><p class="resource-link"><a href="https://careers.uiowa.edu/resume-writing-power-verbs" target="_blank" rel="noopener">See the full Power Verb List</a></p></div></details>
+    <details class="verb-area" id="moreVerbDetails"><summary><strong id="moreVerbLabel">See more power verbs</strong></summary><div style="margin-top:12px"><div class="verb-list" id="verbList"></div><div class="field custom-verb"><label for="customVerb">Or type your own past-tense verb</label><input id="customVerb" type="text" autocomplete="off" placeholder="e.g., Reconciled"></div><p class="resource-link"><a href="https://careers.uiowa.edu/resume-writing-power-verbs" target="_blank" rel="noopener">See the full Power Verb List</a></p></div></details>
     <div class="actions step-actions"><button class="btn" data-back="1" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="verbNext" type="button" disabled>Next →</button></div></div>
   </section>
 
@@ -103,6 +104,21 @@ h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{f
     <div class="final-box"><label for="finalBullet">Your bullet <span class="hint">— edit for accuracy and flow. Keep it concise—not a full sentence.</span></label><textarea id="finalBullet"></textarea></div>
     <div class="formula-strip"><strong>Final check:</strong> Skill (power verb) + what you did + useful detail about who, how, or why</div>
     <div class="tip-box"><strong>Example:</strong> Coordinated weekly programs for 40 residents to increase participation<br><span class="hint">No “I” and no ending period.</span></div>
+    <aside class="ai-help" aria-labelledby="ai-help-title">
+      <span class="ai-label">Optional AI help</span>
+      <h3 id="ai-help-title">Want help refining the wording?</h3>
+      <p>Use AI for a second look at the wording—not to add new accomplishments or details.</p>
+      <div class="ai-actions">
+        <button class="btn primary" id="openCopilot" type="button">Copy Prompt + Go to Copilot ↗</button>
+      </div>
+      <div class="ai-status" id="aiStatus" role="status" aria-live="polite"></div>
+      <div class="ai-fallback" id="aiFallback" hidden>
+        <label for="aiFallbackText"><strong>Copy this prompt manually</strong></label>
+        <textarea id="aiFallbackText" readonly></textarea>
+      </div>
+      <details class="ai-details"><summary>What will the prompt ask AI to do?</summary><p>Give two concise alternatives using only the facts already in your bullet. It will also point out places where real data could strengthen the bullet, but it must not invent numbers or results.</p></details>
+      <p class="ai-privacy">This copies a ready-to-use prompt and opens Microsoft Copilot Chat in a new tab. Paste the prompt into the chat, then review any suggestion before using it.</p>
+    </aside>
     <div class="actions step-actions" id="decisionActions"><button class="btn" data-back="4" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="keepBtn" type="button">Keep This Bullet</button><button class="btn soft" id="discardBtn" type="button">Discard This Bullet</button></div></div>
     <div class="status" id="resultStatus" role="status" aria-live="polite"></div>
     <div id="afterDecision" hidden>
@@ -118,27 +134,127 @@ h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{f
 'use strict';
 const EXPERIENCE_BANK_KEY='uiowaCareerExperienceBank_v1',SKILLS_BANK_KEY='uiowaCareerSkillsBank_v1',BULLET_BANK_KEY='uiowaCareerBulletBank_v1';
 const starterVerbs=['Led','Organized','Created','Supported','Communicated','Analyzed','Improved'];
-const moreVerbs=['Planned','Managed','Facilitated','Presented','Explained','Advised','Developed','Implemented','Evaluated','Researched','Resolved','Achieved','Tracked','Documented','Coordinated','Engaged'];
-const verbMap={lead:'Led',organize:'Organized',create:'Created',support:'Supported',communicate:'Communicated',analyze:'Analyzed',improve:'Improved',plan:'Planned',manage:'Managed',facilitate:'Facilitated',present:'Presented',explain:'Explained',advise:'Advised',develop:'Developed',implement:'Implemented',evaluate:'Evaluated',research:'Researched',resolve:'Resolved',achieve:'Achieved',track:'Tracked',document:'Documented',coordinate:'Coordinated',engage:'Engaged',assist:'Assisted',serve:'Served',mentor:'Mentored',guide:'Guided',coach:'Coached',design:'Designed',streamline:'Streamlined',launch:'Launched',revise:'Revised',assess:'Assessed',investigate:'Investigated',interpret:'Interpreted',compare:'Compared',identify:'Identified',increase:'Increased',reduce:'Reduced',complete:'Completed',generate:'Generated',secure:'Secured',maintain:'Maintained',configure:'Configured',program:'Programmed',operate:'Operated',process:'Processed',monitor:'Monitored',collaborate:'Collaborated',partner:'Partnered',contribute:'Contributed',consult:'Consulted',negotiate:'Negotiated',connect:'Connected',respond:'Responded',write:'Wrote',teach:'Taught',inform:'Informed',direct:'Directed',supervise:'Supervised'};
+const defaultMoreVerbs=['Planned','Managed','Facilitated','Presented','Explained','Advised','Developed','Implemented','Evaluated','Researched','Resolved','Achieved','Tracked','Documented','Coordinated','Engaged'];
+const relatedVerbGroups={
+  lead:{label:'leading & organizing',verbs:['Coordinated','Planned','Managed','Facilitated','Supervised','Directed','Organized','Led','Delegated','Scheduled']},
+  create:{label:'creating & improving',verbs:['Developed','Designed','Implemented','Launched','Revised','Streamlined','Created','Improved','Produced','Built']},
+  support:{label:'supporting & serving',verbs:['Assisted','Served','Mentored','Guided','Coached','Responded','Supported','Advised','Trained','Connected']},
+  communicate:{label:'communicating & teaching',verbs:['Presented','Explained','Wrote','Taught','Advised','Informed','Facilitated','Communicated','Documented','Clarified']},
+  analyze:{label:'researching & analyzing',verbs:['Researched','Evaluated','Assessed','Investigated','Interpreted','Compared','Identified','Analyzed','Reviewed','Examined']},
+  improve:{label:'solving & improving',verbs:['Streamlined','Revised','Resolved','Increased','Reduced','Developed','Implemented','Improved','Troubleshot','Optimized']},
+  collaborate:{label:'collaborating & coordinating',verbs:['Collaborated','Coordinated','Partnered','Contributed','Consulted','Negotiated','Connected','Engaged','Facilitated','Supported']},
+  technical:{label:'technology & process work',verbs:['Tracked','Documented','Maintained','Configured','Programmed','Operated','Processed','Monitored','Troubleshot','Implemented']}
+};
+const starterGroup={Led:'lead',Organized:'lead',Created:'create',Supported:'support',Communicated:'communicate',Analyzed:'analyze',Improved:'improve'};
+const skillVerbMap={
+  'self awareness':['Assessed','Identified','Evaluated'],
+  'goal setting':['Planned','Prioritized','Established'],
+  'learning':['Adapted','Applied','Developed'],
+  'seeking feedback':['Solicited','Incorporated','Revised','Improved'],
+  'self advocacy':['Advocated','Communicated','Negotiated'],
+  'initiative':['Initiated','Launched','Developed','Implemented'],
+  'relationship building':['Connected','Engaged','Collaborated','Partnered'],
+  'verbal communication':['Communicated','Presented','Explained','Informed'],
+  'written communication':['Wrote','Edited','Documented','Developed'],
+  'active listening':['Listened','Responded','Clarified','Supported'],
+  'presenting':['Presented','Facilitated','Explained','Communicated'],
+  'explaining':['Explained','Taught','Informed','Guided'],
+  'persuasion':['Persuaded','Advocated','Negotiated','Influenced'],
+  'audience awareness':['Adapted','Tailored','Communicated','Presented'],
+  'problem solving':['Resolved','Troubleshot','Improved','Identified'],
+  'analysis':['Analyzed','Evaluated','Interpreted','Assessed'],
+  'decision making':['Evaluated','Prioritized','Determined','Selected'],
+  'prioritization':['Prioritized','Organized','Managed','Coordinated'],
+  'research':['Researched','Investigated','Analyzed','Evaluated'],
+  'adaptability':['Adapted','Adjusted','Revised','Responded'],
+  'attention to context':['Assessed','Adapted','Evaluated','Identified'],
+  'perspective taking':['Consulted','Engaged','Adapted','Considered'],
+  'empathy':['Supported','Responded','Guided','Assisted'],
+  'curiosity':['Investigated','Researched','Explored','Examined'],
+  'inclusive decision making':['Consulted','Collaborated','Engaged','Incorporated'],
+  'seeking input':['Consulted','Gathered','Solicited','Engaged'],
+  'open mindedness':['Adapted','Revised','Incorporated','Considered'],
+  'adapting to others needs':['Adapted','Tailored','Supported','Accommodated'],
+  'project coordination':['Coordinated','Planned','Organized','Managed'],
+  'mentoring':['Mentored','Guided','Coached','Trained'],
+  'facilitation':['Facilitated','Led','Guided','Coordinated'],
+  'motivation':['Motivated','Encouraged','Coached','Supported'],
+  'delegation':['Delegated','Assigned','Coordinated','Supervised'],
+  'planning':['Planned','Organized','Coordinated','Developed'],
+  'reliability':['Maintained','Completed','Delivered','Managed'],
+  'time management':['Prioritized','Managed','Scheduled','Coordinated'],
+  'organization':['Organized','Coordinated','Maintained','Managed'],
+  'attention to detail':['Reviewed','Verified','Documented','Monitored'],
+  'accountability':['Managed','Completed','Delivered','Maintained'],
+  'integrity':['Safeguarded','Maintained','Protected','Verified'],
+  'follow through':['Completed','Implemented','Delivered','Maintained'],
+  'collaboration':['Collaborated','Partnered','Coordinated','Contributed'],
+  'conflict management':['Resolved','Mediated','Negotiated','Facilitated'],
+  'supporting others':['Supported','Assisted','Mentored','Guided'],
+  'coordination':['Coordinated','Organized','Scheduled','Managed'],
+  'shared responsibility':['Collaborated','Contributed','Partnered','Coordinated'],
+  'compromise':['Negotiated','Collaborated','Resolved','Facilitated'],
+  'digital tools':['Operated','Configured','Managed','Maintained'],
+  'learning new technology':['Adapted','Implemented','Configured','Applied'],
+  'troubleshooting':['Troubleshot','Resolved','Diagnosed','Identified'],
+  'data tools':['Analyzed','Tracked','Processed','Monitored'],
+  'digital communication':['Communicated','Presented','Documented','Coordinated'],
+  'productivity tools':['Organized','Tracked','Managed','Documented'],
+  'technical adaptability':['Adapted','Configured','Implemented','Troubleshot']
+};
+const competencyVerbMap={career:['Developed','Adapted','Initiated','Improved'],communication:['Communicated','Presented','Explained','Wrote'],critical:['Analyzed','Evaluated','Resolved','Researched'],perspectives:['Consulted','Adapted','Engaged','Supported'],leadership:['Led','Coordinated','Planned','Mentored'],professionalism:['Organized','Managed','Maintained','Completed'],teamwork:['Collaborated','Coordinated','Supported','Partnered'],technology:['Tracked','Configured','Implemented','Troubleshot']};
+const verbMap={lead:'Led',organize:'Organized',create:'Created',support:'Supported',communicate:'Communicated',analyze:'Analyzed',improve:'Improved',plan:'Planned',manage:'Managed',facilitate:'Facilitated',present:'Presented',explain:'Explained',advise:'Advised',develop:'Developed',implement:'Implemented',evaluate:'Evaluated',research:'Researched',resolve:'Resolved',achieve:'Achieved',track:'Tracked',document:'Documented',coordinate:'Coordinated',engage:'Engaged',assist:'Assisted',serve:'Served',mentor:'Mentored',guide:'Guided',coach:'Coached',design:'Designed',streamline:'Streamlined',launch:'Launched',revise:'Revised',assess:'Assessed',investigate:'Investigated',interpret:'Interpreted',compare:'Compared',identify:'Identified',increase:'Increased',reduce:'Reduced',complete:'Completed',generate:'Generated',secure:'Secured',maintain:'Maintained',configure:'Configured',program:'Programmed',operate:'Operated',process:'Processed',monitor:'Monitored',collaborate:'Collaborated',partner:'Partnered',contribute:'Contributed',consult:'Consulted',negotiate:'Negotiated',connect:'Connected',respond:'Responded',write:'Wrote',teach:'Taught',inform:'Informed',direct:'Directed',supervise:'Supervised',delegate:'Delegated',schedule:'Scheduled',train:'Trained',clarify:'Clarified',edit:'Edited',advocate:'Advocated',prioritize:'Prioritized',troubleshoot:'Troubleshot',review:'Reviewed',verify:'Verified',mediate:'Mediated',tailor:'Tailored',adapt:'Adapted'};
 const $=id=>document.getElementById(id);
 const stepPanels=[...document.querySelectorAll('.step-panel')],chips=[...document.querySelectorAll('.step-chip')];
 const recentWrap=$('recentWrap'),recentList=$('recentList'),experienceName=$('experienceName'),experienceContext=$('experienceContext'),experienceNext=$('experienceNext'),experienceStatus=$('experienceStatus');
-const skillHandoff=$('skillHandoff'),skillHandoffList=$('skillHandoffList'),starterVerbWrap=$('starterVerbWrap'),starterVerbList=$('starterVerbList'),moreVerbDetails=$('moreVerbDetails'),verbList=$('verbList'),customVerb=$('customVerb'),verbNext=$('verbNext');
+const skillHandoff=$('skillHandoff'),skillHandoffList=$('skillHandoffList'),starterVerbWrap=$('starterVerbWrap'),starterVerbList=$('starterVerbList'),moreVerbDetails=$('moreVerbDetails'),moreVerbLabel=$('moreVerbLabel'),verbList=$('verbList'),customVerb=$('customVerb'),verbNext=$('verbNext');
 const whatDid=$('whatDid'),verbPrefix=$('verbPrefix'),actionVerbDisplay=$('actionVerbDisplay'),actionNext=$('actionNext');
 const scopeDetail=$('scopeDetail'),howDetail=$('howDetail'),resultDetail=$('resultDetail'),detailOptions=[...document.querySelectorAll('.detail-option')],detailEditors={scope:$('scopeEditor'),how:$('howEditor'),result:$('resultEditor')},detailBulletDisplay=$('detailBulletDisplay'),detailNext=$('detailNext'),detailStatus=$('detailStatus');
-const reviewGrid=$('reviewGrid'),finalBullet=$('finalBullet'),keepBtn=$('keepBtn'),discardBtn=$('discardBtn'),afterDecision=$('afterDecision'),resultStatus=$('resultStatus'),savedList=$('savedList'),copyAllBtn=$('copyAllBtn'),printBtn=$('printBtn'),anotherBtn=$('anotherBtn'),differentBtn=$('differentBtn');
-let currentStep=1,selectedVerb='',selectedRecentId=null,activeDetail='',recentExperiences=[],skillsBank=[];
-function normalize(v){return String(v||'').trim().toLowerCase()}function trimPiece(v){return String(v||'').trim().replace(/[.;,]+$/,'')}function escapeHtml(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+const reviewGrid=$('reviewGrid'),finalBullet=$('finalBullet'),openCopilot=$('openCopilot'),aiStatus=$('aiStatus'),aiFallback=$('aiFallback'),aiFallbackText=$('aiFallbackText'),keepBtn=$('keepBtn'),discardBtn=$('discardBtn'),afterDecision=$('afterDecision'),resultStatus=$('resultStatus'),savedList=$('savedList'),copyAllBtn=$('copyAllBtn'),printBtn=$('printBtn'),anotherBtn=$('anotherBtn'),differentBtn=$('differentBtn');
+let currentStep=1,selectedVerb='',selectedVerbSource='',selectedRecentId=null,activeDetail='',recentExperiences=[],skillsBank=[];
+function normalize(v){return String(v||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').replace(/\s+/g,' ').trim()}function trimPiece(v){return String(v||'').trim().replace(/[.;,]+$/,'')}function escapeHtml(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function safeRead(k){try{const v=JSON.parse(localStorage.getItem(k)||'[]');return Array.isArray(v)?v:[]}catch(e){return[]}}function safeWrite(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}
 function showStep(n,focus=true){currentStep=n;stepPanels.forEach(p=>p.hidden=Number(p.dataset.step)!==n);chips.forEach(c=>{const x=Number(c.dataset.chip);c.classList.toggle('current',x===n);c.classList.toggle('done',x<n)});if(focus){const panel=stepPanels.find(p=>Number(p.dataset.step)===n);panel?.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>panel?.querySelector('h2')?.focus?.(),250)}}
 function loadHandoffs(){recentExperiences=safeRead(EXPERIENCE_BANK_KEY).filter(x=>x&&x.experienceName).slice(0,8);skillsBank=safeRead(SKILLS_BANK_KEY).filter(x=>x&&x.experienceName);renderRecent()}
 function renderRecent(){recentList.innerHTML='';recentWrap.hidden=!recentExperiences.length;recentExperiences.forEach((exp,index)=>{const id=exp.id||`${exp.experienceName}-${index}`;const b=document.createElement('button');b.type='button';b.className='recent-btn';b.setAttribute('aria-pressed',String(selectedRecentId===id));b.innerHTML=`${escapeHtml(exp.experienceName)}${exp.context?`<span class="recent-context">${escapeHtml(exp.context)}</span>`:''}`;b.onclick=()=>{selectedRecentId=id;experienceName.value=exp.experienceName||'';experienceContext.value=exp.context||'';renderRecent();updateExperienceNext()};recentList.appendChild(b)})}
 function updateExperienceNext(){experienceNext.disabled=!experienceName.value.trim();experienceStatus.textContent=''}
-function skillResultFor(name){return skillsBank.find(x=>normalize(x.experienceName)===normalize(name))||null}
-function renderVerbButton(container,verb,rerender){const b=document.createElement('button');b.type='button';b.className='verb-btn';b.textContent=verb;b.setAttribute('aria-pressed',String(selectedVerb===verb&&!customVerb.value.trim()));b.onclick=()=>{selectedVerb=verb;customVerb.value='';rerender();updateVerbNext()};container.appendChild(b)}
-function renderSkillHandoff(){skillHandoffList.innerHTML='';const match=skillResultFor(experienceName.value);const verbs=[];(match?.competencies||[]).forEach(c=>(c.selectedVerbs||c.verbs||[]).forEach(v=>{if(v&&!verbs.includes(v))verbs.push(v)}));const names=verbs.slice(0,8);skillHandoff.hidden=!names.length;starterVerbWrap.hidden=!!names.length;if(names.length)names.forEach(v=>renderVerbButton(skillHandoffList,v,renderAllVerbs));}
-function renderStarter(){starterVerbList.innerHTML='';starterVerbs.forEach(v=>renderVerbButton(starterVerbList,v,renderAllVerbs))}
-function renderMore(){verbList.innerHTML='';moreVerbs.forEach(v=>renderVerbButton(verbList,v,renderAllVerbs))}
+function skillResultFor(name){
+  const key=normalize(name);
+  if(!key)return null;
+  return skillsBank.find(x=>normalize(x.experienceName)===key) || skillsBank.find(x=>{const other=normalize(x.experienceName);return key.length>=5&&other.length>=5&&(key.includes(other)||other.includes(key))}) || null
+}
+function uniqueVerbs(items){const seen=new Set(),out=[];items.forEach(v=>{const key=normalize(v);if(v&&key&&!seen.has(key)){seen.add(key);out.push(v)}});return out}
+function skillVerbSuggestions(match){
+  if(!match)return [];
+  const out=[];
+  (match.competencies||[]).forEach(c=>{
+    const skills=Array.isArray(c.skills)?c.skills:[];
+    skills.forEach(skill=>{(skillVerbMap[normalize(skill)]||[]).forEach(v=>out.push(v))});
+    if(!skills.length)(competencyVerbMap[normalize(c.id)]||[]).forEach(v=>out.push(v));
+  });
+  return uniqueVerbs(out).slice(0,10)
+}
+function groupForVerb(verb){
+  if(starterGroup[verb])return starterGroup[verb];
+  const key=normalize(verb);
+  for(const [group,data] of Object.entries(relatedVerbGroups)){if(data.verbs.some(v=>normalize(v)===key))return group}
+  return ''
+}
+function renderVerbButton(container,verb,source='more'){const b=document.createElement('button');b.type='button';b.className='verb-btn';b.textContent=verb;b.setAttribute('aria-pressed',String(selectedVerb===verb&&!customVerb.value.trim()));b.onclick=()=>{selectedVerb=verb;selectedVerbSource=source;customVerb.value='';renderAllVerbs();updateVerbNext()};container.appendChild(b)}
+function renderSkillHandoff(){skillHandoffList.innerHTML='';const match=skillResultFor(experienceName.value);const names=skillVerbSuggestions(match);skillHandoff.hidden=!names.length;starterVerbWrap.hidden=!!names.length;if(names.length)names.forEach(v=>renderVerbButton(skillHandoffList,v,'skills'));}
+function renderStarter(){starterVerbList.innerHTML='';starterVerbs.forEach(v=>renderVerbButton(starterVerbList,v,'starter'))}
+function renderMore(){
+  verbList.innerHTML='';
+  const group=groupForVerb(selectedVerb);
+  let choices=defaultMoreVerbs;
+  if(selectedVerb && group && relatedVerbGroups[group]){
+    choices=relatedVerbGroups[group].verbs.filter(v=>normalize(v)!==normalize(selectedVerb));
+    moreVerbLabel.textContent=`More verbs for ${relatedVerbGroups[group].label}`;
+  }else{
+    moreVerbLabel.textContent='See more power verbs';
+  }
+  uniqueVerbs(choices).forEach(v=>renderVerbButton(verbList,v,'more'))
+}
 function renderAllVerbs(){renderSkillHandoff();renderStarter();renderMore()}
 function chosenVerb(){const typed=trimPiece(customVerb.value);if(!typed)return selectedVerb;return verbMap[typed.toLowerCase()]||typed}
 function updateVerbNext(){verbNext.disabled=!chosenVerb()}
@@ -152,18 +268,59 @@ function renderReview(){const detailLabels=[];if(trimPiece(scopeDetail.value))de
 function savedForExperience(){return safeRead(BULLET_BANK_KEY).filter(x=>x&&normalize(x.experienceName)===normalize(experienceName.value))}
 function renderSaved(){const saved=savedForExperience();savedList.innerHTML='';copyAllBtn.disabled=!saved.length;printBtn.disabled=!saved.length;if(!saved.length){savedList.innerHTML='<div class="empty">No bullets kept yet.</div>';return}saved.forEach(item=>{const card=document.createElement('div');card.className='saved-card';card.innerHTML=`<div class="saved-bullet">• ${escapeHtml(item.bullet)}</div>`;const a=document.createElement('div');a.className='saved-actions';const copy=document.createElement('button');copy.type='button';copy.className='btn small';copy.textContent='Copy';copy.onclick=()=>copyText(item.bullet,'Copied saved bullet.');const remove=document.createElement('button');remove.type='button';remove.className='btn small';remove.textContent='Remove';remove.onclick=()=>{safeWrite(BULLET_BANK_KEY,safeRead(BULLET_BANK_KEY).filter(x=>x&&x.id!==item.id));renderSaved();resultStatus.textContent='Removed from recent work.'};a.append(copy,remove);card.appendChild(a);savedList.appendChild(card)})}
 function prepareReview(){finalBullet.value=buildBullet();renderReview();renderSaved();afterDecision.hidden=true;resultStatus.textContent='';showStep(5)}
-async function copyText(text,msg){try{await navigator.clipboard.writeText(text);resultStatus.textContent=msg}catch(e){const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');resultStatus.textContent=msg}catch(err){resultStatus.textContent='Copy was blocked. Select and copy manually.'}ta.remove()}}
+async function copyText(text,msg,statusEl=resultStatus){try{await navigator.clipboard.writeText(text);statusEl.textContent=msg}catch(e){const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');statusEl.textContent=msg}catch(err){statusEl.textContent='Copy was blocked. Select and copy manually.'}ta.remove()}}
+function buildAiPrompt(){const bullet=trimPiece(finalBullet.value);if(!bullet)return '';return `Help me refine this resume bullet. Use ONLY the facts already present in my bullet. Do not add, infer, or exaggerate responsibilities, results, numbers, tools, skills, or impact. If a meaningful improvement would require information I have not provided, tell me what information is missing instead of inventing it.
+
+Current bullet:
+${bullet}
+
+Give me two concise alternate versions that preserve the meaning and facts. Start with a strong action verb when appropriate, do not use "I," and do not add an ending period. Prefer clear, specific wording over buzzwords. If the original is already strong, say so briefly before giving the alternatives.
+
+Then add a short section titled "Possible data to add (only if accurate and available)." Suggest up to three specific places where concrete data could make this bullet stronger—for example number of people served, frequency, volume, time, size or scope, dollar amount, or an observable result. Phrase these as questions or blanks for me to fill in. Do NOT invent, estimate, assume, or imply any number or result. Only suggest data I could realistically know or verify from my experience. If data would not meaningfully improve this bullet, say "No data needed."` }
 experienceName.addEventListener('input',()=>{const selected=recentExperiences.find((exp,index)=>(exp.id||`${exp.experienceName}-${index}`)===selectedRecentId);if(!selected||normalize(experienceName.value)!==normalize(selected.experienceName)){selectedRecentId=null;renderRecent()}updateExperienceNext()});
 experienceNext.onclick=()=>{if(!experienceName.value.trim()){experienceStatus.textContent='Add an experience first.';return}renderAllVerbs();updateVerbNext();showStep(2)};
-customVerb.addEventListener('input',()=>{if(customVerb.value.trim())selectedVerb='';renderAllVerbs();updateVerbNext()});
+customVerb.addEventListener('input',()=>{if(customVerb.value.trim()){selectedVerb='';selectedVerbSource='custom'}renderAllVerbs();updateVerbNext()});
 verbNext.onclick=()=>{if(!chosenVerb())return;updateAction();showStep(3)};
 whatDid.addEventListener('input',updateAction);actionNext.onclick=()=>{if(!trimPiece(whatDid.value))return;updateDetail();showStep(4)};
 detailOptions.forEach(b=>b.onclick=()=>setActiveDetail(b.dataset.detail));[scopeDetail,howDetail,resultDetail].forEach(i=>i.addEventListener('input',updateDetail));detailNext.onclick=()=>{if(!(activeDetail&&activeDetailValue())){detailStatus.textContent='Choose who / scope, how, or why / result and add one detail.';return}prepareReview()};
+openCopilot.onclick=async()=>{
+  const prompt=buildAiPrompt();
+  if(!prompt){aiStatus.textContent='Add or keep a bullet above before opening Copilot.';return}
+
+  // Open the tab immediately so browsers are less likely to block it.
+  const tab=window.open('about:blank','_blank');
+  if(tab){try{tab.opener=null}catch(e){}}
+
+  let copied=false;
+  try{
+    await navigator.clipboard.writeText(prompt);
+    copied=true;
+  }catch(e){
+    const ta=document.createElement('textarea');
+    ta.value=prompt;
+    ta.setAttribute('readonly','');
+    ta.style.position='fixed';
+    ta.style.left='-9999px';
+    ta.style.top='0';
+    document.body.appendChild(ta);
+    ta.select();
+    try{copied=document.execCommand('copy')}catch(err){copied=false}
+    ta.remove();
+  }
+
+  if(tab){
+    tab.location.href='https://copilot.cloud.microsoft/chat';
+    aiStatus.textContent=copied?'Prompt copied. Paste it into Copilot when the new tab opens.':'Copilot opened, but your browser blocked automatic copying. The prompt is ready below for manual copy.'; if(!copied){aiFallback.hidden=false;aiFallbackText.value=prompt;aiFallbackText.focus();aiFallbackText.select();}
+  }else{
+    aiStatus.textContent=copied?'Prompt copied. Your browser blocked the new tab; open Copilot Chat and paste it.':'Your browser blocked the new tab and automatic copying. The prompt is ready below for manual copy.'; if(!copied){aiFallback.hidden=false;aiFallbackText.value=prompt;aiFallbackText.focus();aiFallbackText.select();}
+  }
+};
+finalBullet.addEventListener('input',()=>{aiStatus.textContent='';aiFallback.hidden=true;aiFallbackText.value=''});
 document.querySelectorAll('[data-back]').forEach(b=>b.addEventListener('click',()=>showStep(Number(b.dataset.back))));
 keepBtn.onclick=()=>{const bullet=trimPiece(finalBullet.value);if(!bullet){resultStatus.textContent='Add your final bullet first.';return}let bank=safeRead(BULLET_BANK_KEY);const dup=bank.some(x=>x&&normalize(x.experienceName)===normalize(experienceName.value)&&normalize(x.bullet)===normalize(bullet));if(!dup){bank.unshift({id:`bullet-${Date.now()}-${Math.random().toString(36).slice(2,8)}`,experienceName:experienceName.value.trim(),context:experienceContext.value.trim(),bullet,updatedAt:new Date().toISOString()});bank=bank.slice(0,60)}const stored=safeWrite(BULLET_BANK_KEY,bank);resultStatus.textContent=stored?(dup?'This bullet is already in your recent work.':'Kept this bullet on this device.'):'Browser storage was blocked. Copy or Print / Save instead.';renderSaved();afterDecision.hidden=false};
 discardBtn.onclick=()=>{resultStatus.textContent='Discarded. Build another bullet or finish with the bullets you’ve kept.';renderSaved();afterDecision.hidden=false};
 copyAllBtn.onclick=()=>{const saved=savedForExperience();if(saved.length)copyText(saved.map(x=>'• '+x.bullet).join('\n'),'Copied your saved bullets.')};printBtn.onclick=()=>window.print();
-function resetBullet(){selectedVerb='';customVerb.value='';whatDid.value='';scopeDetail.value='';howDetail.value='';resultDetail.value='';finalBullet.value='';activeDetail='';setActiveDetail('');afterDecision.hidden=true;resultStatus.textContent='';moreVerbDetails.open=false;renderAllVerbs();updateVerbNext();updateAction();updateDetail()}
+function resetBullet(){selectedVerb='';selectedVerbSource='';customVerb.value='';whatDid.value='';scopeDetail.value='';howDetail.value='';resultDetail.value='';finalBullet.value='';activeDetail='';setActiveDetail('');afterDecision.hidden=true;resultStatus.textContent='';aiStatus.textContent='';aiFallback.hidden=true;aiFallbackText.value='';moreVerbDetails.open=false;renderAllVerbs();updateVerbNext();updateAction();updateDetail()}
 anotherBtn.onclick=()=>{resetBullet();showStep(2)};
 differentBtn.onclick=()=>{resetBullet();experienceName.value='';experienceContext.value='';selectedRecentId=null;renderRecent();updateExperienceNext();showStep(1);setTimeout(()=>experienceName.focus(),300)};
 loadHandoffs();renderStarter();renderMore();updateExperienceNext();showStep(1,false);
